@@ -1,0 +1,7 @@
+{
+  "name": "TECHNEO - Premium Software Solutions",
+  "description": "A cutting-edge portfolio for a modern software engineering firm, featuring orange accents, GSAP animations, and Three.js 3D elements.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
