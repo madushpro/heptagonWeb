@@ -25,7 +25,7 @@ const articles = [
 const News: React.FC = () => {
   return (
     <section
-      className="py-20 md:py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-[#0a0d12] bg-white dark:border-y dark:border-white/5"
+      className="py-20 md:py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-black bg-white dark:border-y dark:border-white/5"
       id="our-blog"
     >
       <div className="text-center mb-12 md:mb-16 reveal">

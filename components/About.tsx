@@ -14,7 +14,7 @@ const About: React.FC = () => {
 
   return (
     <section
-      className="py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-[#07090d] bg-white dark:border-y dark:border-white/5"
+      className="py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-black bg-white dark:border-y dark:border-white/5"
       id="about-us"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">

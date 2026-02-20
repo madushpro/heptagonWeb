@@ -3,7 +3,7 @@ import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const Testimonials: React.FC = () => {
   return (
-    <section className="py-20 md:py-24 px-4 md:px-12 dark:bg-[#080b0f] bg-gray-50 relative overflow-hidden transition-colors duration-500 dark:border-y dark:border-white/5">
+    <section className="py-20 md:py-24 px-4 md:px-12 dark:bg-zinc-900 bg-gray-50 relative overflow-hidden transition-colors duration-500 dark:border-y dark:border-white/5">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
         <div className="reveal">
           <span className="text-orange-500 font-bold tracking-widest uppercase text-sm mb-4 block">

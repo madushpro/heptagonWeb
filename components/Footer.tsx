@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
   return (
     <footer
       ref={footerRef}
-      className="relative pt-20 md:pt-32 pb-12 px-4 md:px-12 dark:bg-[#090e14] bg-gray-100 transition-colors duration-500 overflow-hidden border-t dark:border-white/5"
+      className="relative pt-20 md:pt-32 pb-12 px-4 md:px-12 dark:bg-zinc-900 bg-gray-100 transition-colors duration-500 overflow-hidden border-t dark:border-white/5"
     >
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-orange-900/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 

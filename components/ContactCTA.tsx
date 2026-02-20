@@ -41,7 +41,7 @@ const ContactCTA: React.FC = () => {
     <section
       id="contact"
       ref={containerRef}
-      className="py-20 md:py-32 px-4 md:px-12 overflow-hidden dark:bg-[#06090d] bg-white transition-colors duration-500 dark:border-y dark:border-white/5"
+      className="py-20 md:py-32 px-4 md:px-12 overflow-hidden dark:bg-black bg-white transition-colors duration-500 dark:border-y dark:border-white/5"
     >
       <div className="max-w-[1600px] mx-auto relative rounded-[2rem] md:rounded-[4rem] dark:bg-[#0f141a] bg-[#f3f4f6] border dark:border-white/10 border-black/5 min-h-[520px] md:h-[800px] flex items-center justify-center overflow-hidden shadow-2xl">
         <div className="absolute inset-0 pointer-events-none">

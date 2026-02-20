@@ -1,9 +1,12 @@
 import { ThemeProvider as NextThemesProvider, useTheme as useNextTheme } from 'next-themes';
 import type { ThemeProviderProps } from 'next-themes';
+import type { ReactNode } from 'react';
 
 type AppTheme = 'dark' | 'light';
 
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+type AppThemeProviderProps = ThemeProviderProps & { children?: ReactNode };
+
+export function ThemeProvider({ children, ...props }: AppThemeProviderProps) {
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
 

@@ -99,7 +99,9 @@ const ServiceCard: React.FC<{
   <div
     className="
     relative overflow-hidden
-    p-6 md:p-10 
+    p-6 md:p-10
+    min-h-[320px] md:min-h-[360px]
+    flex flex-col
     rounded-[2rem] md:rounded-[2.5rem]
     transition-all duration-500 ease-out
     group reveal
@@ -158,7 +160,7 @@ const ServiceCard: React.FC<{
       className="text-sm leading-relaxed mb-8 
       text-zinc-600 dark:text-zinc-400 
       font-medium
-      transition-colors duration-300"
+      transition-colors duration-300 flex-1"
     >
       {desc}
     </p>

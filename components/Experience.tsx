@@ -9,7 +9,7 @@ const stats = [
 
 const Experience: React.FC = () => {
   return (
-    <section className="py-20 md:py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-[#0a0e13] bg-white dark:border-y dark:border-white/5">
+    <section className="py-20 md:py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-black bg-white dark:border-y dark:border-white/5">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
         <div className="relative reveal">
           <div className="relative w-full aspect-square max-w-md mx-auto">

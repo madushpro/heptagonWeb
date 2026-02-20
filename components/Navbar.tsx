@@ -54,13 +54,13 @@ const Navbar: React.FC = () => {
         className="flex items-center space-x-2 group cursor-pointer"
       >
         {theme === "light" ? (
-          <img src={logo1} alt="" className="w-24" />
+          <img src={logo1} alt="" className="w-32" />
         ) : (
-          <img src={logo2} alt="" className="w-24" />
+          <img src={logo2} alt="" className="w-32" />
         )}
       </button>
 
-      <div className="hidden lg:flex items-center space-x-8 xl:space-x-10 text-xs font-black dark:text-zinc-400 text-zinc-500 uppercase tracking-[0.2em]">
+      <div className="hidden lg:flex items-center space-x-8 xl:space-x-10 text-xs dark:text-zinc-400 text-zinc-600 font-semibold uppercase tracking-[0.2em]">
         {NAV_ITEMS.map((item) => (
           <button
             key={item.id}
@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
       <div className="flex items-center space-x-4 relative">
         <ModeToggle />
 
-        <div className="relative hidden sm:block">
+        {/* <div className="relative hidden sm:block">
           <button
             type="button"
             onClick={() => setSearchOpen((prev: any) => !prev)}
@@ -110,7 +110,7 @@ const Navbar: React.FC = () => {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
 
         <button
           type="button"
