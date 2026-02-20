@@ -9,8 +9,8 @@ const stats = [
 
 const Experience: React.FC = () => {
   return (
-    <section className="py-24 px-4 md:px-12 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <section className="py-20 md:py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-[#0a0e13] dark:border-y dark:border-white/5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
         <div className="relative reveal">
           <div className="relative w-full aspect-square max-w-md mx-auto">
             <div className="absolute inset-0 bg-orange-gradient rounded-full opacity-10 animate-pulse"></div>
@@ -19,8 +19,8 @@ const Experience: React.FC = () => {
               className="w-full h-full object-cover rounded-full border-[10px] dark:border-white/5  border-black/5 grayscale hover:grayscale-0 transition-all duration-700"
               alt="mobile dev"
             />
-            <div className="absolute -bottom-10 -right-10 dark:bg-[#111]  bg-white border dark:border-white/10  border-black/5 p-6 rounded-3xl shadow-2xl reveal">
-              <p className="text-orange-500 font-bold text-4xl mb-1">10k+</p>
+            <div className="absolute -bottom-4 sm:-bottom-10 right-0 sm:-right-10 dark:bg-[#111] bg-white border dark:border-white/10 border-black/5 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-2xl reveal">
+              <p className="text-orange-500 font-bold text-2xl sm:text-4xl mb-1">10k+</p>
               <p className="dark:text-gray-400  text-gray-500 text-xs uppercase font-bold tracking-widest">
                 Active Users
               </p>
@@ -32,20 +32,20 @@ const Experience: React.FC = () => {
           <span className="text-orange-500 font-bold tracking-widest uppercase text-sm mb-4 block">
             BACKED BY REAL SKILLS
           </span>
-          <h2 className="text-4xl md:text-5xl font-black mb-8 leading-tight dark:text-white  text-gray-900">
+          <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight dark:text-white text-gray-900">
             Deep Expertise In Cutting Edge{" "}
             <span className="text-orange-gradient">Software Solutions</span>
           </h2>
-          <p className="dark:text-gray-400  text-gray-600 text-lg mb-12 leading-relaxed">
+          <p className="dark:text-gray-400 text-gray-600 text-base md:text-lg mb-10 md:mb-12 leading-relaxed">
             With years of hands on experience and passion for innovation we
             specialize in delivering advanced software best solutions for global
             clients.
           </p>
 
-          <div className="grid grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-10 md:mb-12">
             {stats.map((s, i) => (
               <div key={i} className="text-center">
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full border-4 dark:border-orange-500/20  border-orange-500/10 flex items-center justify-center relative">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 rounded-full border-4 dark:border-orange-500/20 border-orange-500/10 flex items-center justify-center relative">
                   <span className="text-xl font-black dark:text-white  text-gray-900">
                     {s.val}
                   </span>

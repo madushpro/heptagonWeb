@@ -13,19 +13,22 @@ const About: React.FC = () => {
   };
 
   return (
-    <section className="py-24 px-4 md:px-12 max-w-7xl mx-auto" id="about-us">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section
+      className="py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-[#07090d] dark:border-y dark:border-white/5"
+      id="about-us"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
         <div className="reveal">
           <span className="text-orange-500 font-bold tracking-widest uppercase text-sm mb-4 block">
             WHO WE ARE
           </span>
-          <h2 className="text-4xl md:text-5xl font-black mb-8 leading-tight dark:text-white  text-gray-900">
+          <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight dark:text-white text-gray-900">
             We are passionate team of{" "}
             <span className="opacity-40">
               developers, designers & strategists
             </span>
           </h2>
-          <p className="text-lg mb-10 leading-relaxed dark:text-gray-400  text-gray-600">
+          <p className="text-base md:text-lg mb-10 leading-relaxed dark:text-gray-400 text-gray-600">
             Committed to delivering smart, scalable, and reliable software
             solutions. With an deep understanding of technology and focus on
             innovation, we help businesses solve complex problems.
@@ -39,7 +42,7 @@ const About: React.FC = () => {
             <ArrowUpRight size={20} />
           </button>
 
-          <div className="mt-16 flex items-center space-x-12">
+          <div className="mt-12 md:mt-16 flex flex-col sm:flex-row sm:items-center gap-8 sm:gap-12">
             <div className="flex flex-col">
               <span className="text-5xl font-black text-orange-gradient">
                 25+
@@ -48,7 +51,7 @@ const About: React.FC = () => {
                 Years of Experience
               </span>
             </div>
-            <div className="h-16 w-px bg-white/10 dark:bg-white/10  bg-gray-200"></div>
+            <div className="hidden sm:block h-16 w-px bg-white/10 dark:bg-white/10 bg-gray-200"></div>
             <div className="flex items-center space-x-4">
               <div className="w-16 h-16 rounded-full border border-orange-500/50 flex items-center justify-center animate-pulse">
                 <div className="w-10 h-10 rounded-full bg-orange-gradient flex items-center justify-center">
@@ -63,13 +66,13 @@ const About: React.FC = () => {
         </div>
 
         <div className="relative reveal">
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <img
               src="https://picsum.photos/seed/abt1/600/800"
               className="rounded-[2.5rem] w-full aspect-[3/4] object-cover border border-white/5 grayscale hover:grayscale-0 transition-all duration-700 dark:border-white/5  border-black/5"
               alt="meeting"
             />
-            <div className="flex flex-col gap-6 pt-12">
+            <div className="flex flex-col gap-6 sm:pt-12">
               <img
                 src="https://picsum.photos/seed/abt2/600/600"
                 className="rounded-[2.5rem] w-full aspect-square object-cover border border-white/5 grayscale hover:grayscale-0 transition-all duration-700 dark:border-white/5  border-black/5"

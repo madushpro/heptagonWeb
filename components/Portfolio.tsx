@@ -2,105 +2,93 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
-import { useTheme } from "./theme-provider";
-
-const projects = [
-  {
-    title: "Financial Dashboard SME",
-    cat: "Software Development",
-    img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=1000",
-  },
-  {
-    title: "E-Commerce Cloud Engine",
-    cat: "Web Platform",
-    img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=1000",
-  },
-  {
-    title: "AI Analytics Pro",
-    cat: "Mobile App",
-    img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=1000",
-  },
-  {
-    title: "HealthTech Portal",
-    cat: "Software System",
-    img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=1000",
-  },
-  {
-    title: "Smart City Logistics",
-    cat: "Infrastructure",
-    img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000",
-  },
-  {
-    title: "CyberSec Guardian",
-    cat: "Security",
-    img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000",
-  },
-];
+import { projects } from "./projectsData";
 
 const Portfolio: React.FC = () => {
-  const { theme } = useTheme();
   const sectionRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const scrollWrapper = containerRef.current;
-      if (!scrollWrapper) return;
+    const mm = gsap.matchMedia();
 
-      const getScrollAmount = () => {
-        let wrapperWidth = scrollWrapper.scrollWidth;
-        return -(wrapperWidth - window.innerWidth);
-      };
+    mm.add("(min-width: 768px)", () => {
+      const ctx = gsap.context(() => {
+        const scrollWrapper = containerRef.current;
+        if (!scrollWrapper || !sectionRef.current) return;
 
-      const tween = gsap.to(scrollWrapper, {
-        x: getScrollAmount,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: () => `+=${scrollWrapper.scrollWidth}`,
-          pin: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-        },
-      });
+        const getScrollAmount = () => {
+          const wrapperWidth = scrollWrapper.scrollWidth;
+          return -(wrapperWidth - window.innerWidth);
+        };
 
-      gsap.utils.toArray(".project-card").forEach((card: any) => {
-        gsap.fromTo(
-          card.querySelector("img"),
-          { scale: 1.2 },
-          {
-            scale: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: card,
-              containerAnimation: tween,
-              start: "left right",
-              end: "right left",
-              scrub: true,
-            },
+        const tween = gsap.to(scrollWrapper, {
+          x: getScrollAmount,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: () => `+=${scrollWrapper.scrollWidth}`,
+            pin: true,
+            scrub: 1,
+            invalidateOnRefresh: true,
           },
-        );
-      });
-    }, sectionRef);
+        });
 
-    return () => ctx.revert();
+        gsap.utils.toArray(".project-card").forEach((card: any) => {
+          gsap.fromTo(
+            card.querySelector("img"),
+            { scale: 1.2 },
+            {
+              scale: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                containerAnimation: tween,
+                start: "left right",
+                end: "right left",
+                scrub: true,
+              },
+            },
+          );
+        });
+
+        const refreshAfterSetup = window.setTimeout(() => {
+          ScrollTrigger.refresh();
+          window.dispatchEvent(new Event("portfolio-scroll-ready"));
+        }, 80);
+
+        const refreshOnLoad = () => {
+          ScrollTrigger.refresh();
+          window.dispatchEvent(new Event("portfolio-scroll-ready"));
+        };
+        window.addEventListener("load", refreshOnLoad);
+
+        return () => {
+          window.clearTimeout(refreshAfterSetup);
+          window.removeEventListener("load", refreshOnLoad);
+        };
+      }, sectionRef);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (
     <div
       ref={sectionRef}
-      className="dark:bg-[#050505]  bg-[#f8f8f8] overflow-hidden transition-colors duration-500"
+      className="dark:bg-[#070a0e] bg-[#f8f8f8] overflow-hidden transition-colors duration-500 dark:border-y dark:border-white/5"
       id="our-work"
     >
-      <div className="h-screen flex flex-col justify-center relative">
-        <div className="max-w-7xl mx-auto w-full px-4 md:px-12 mb-12">
+      <div className="py-16 md:py-0 md:h-screen flex flex-col justify-center relative">
+        <div className="max-w-7xl mx-auto w-full px-4 md:px-12 mb-8 md:mb-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <span className="text-orange-500 font-bold tracking-[0.3em] uppercase text-xs mb-4 block">
                 Selected Works
               </span>
-              <h2 className="text-5xl md:text-8xl font-black tracking-tighter dark:text-white  text-gray-900">
+              <h2 className="text-4xl md:text-8xl font-black tracking-tighter dark:text-white text-gray-900">
                 Latest <span className="text-orange-gradient">Innovations</span>
               </h2>
             </div>
@@ -123,13 +111,39 @@ const Portfolio: React.FC = () => {
           </div>
         </div>
 
+        <div className="md:hidden px-4 space-y-6">
+          {projects.map((p, i) => (
+            <a
+              key={p.id}
+              href={`/projects#${p.id}`}
+              className="group relative block overflow-hidden rounded-[2rem] h-80 dark:bg-[#0a0a0a] bg-white border dark:border-white/5 border-black/5 shadow-sm"
+            >
+              <img
+                src={p.img}
+                className="w-full h-full object-cover transition-all duration-700 grayscale group-hover:grayscale-0"
+                alt={p.title}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t dark:from-black dark:via-black/20 dark:to-transparent from-white via-white/20 to-transparent opacity-80" />
+              <div className="absolute inset-0 p-6 flex flex-col justify-end z-10">
+                <span className="text-orange-500 text-xs font-black mb-2 block tracking-widest">
+                  PROJECT 0{i + 1}
+                </span>
+                <h3 className="text-2xl font-black tracking-tight leading-tight max-w-[85%] dark:text-white text-gray-900">
+                  {p.title}
+                </h3>
+              </div>
+            </a>
+          ))}
+        </div>
+
         <div
           ref={containerRef}
-          className="flex items-center h-[60vh] md:h-[70vh] w-fit px-4 md:px-12 gap-6 md:gap-12 will-change-transform"
+          className="hidden md:flex items-center h-[70vh] w-fit px-4 md:px-12 gap-6 md:gap-12 will-change-transform"
         >
           {projects.map((p, i) => (
-            <div
-              key={i}
+            <a
+              key={p.id}
+              href={`/projects#${p.id}`}
               className="project-card group relative overflow-hidden rounded-[2rem] md:rounded-[3.5rem] w-[85vw] md:w-[550px] h-full flex-shrink-0 dark:bg-[#0a0a0a]  bg-white border dark:border-white/5  border-black/5 shadow-sm"
             >
               <div className="absolute inset-0 overflow-hidden">
@@ -166,7 +180,7 @@ const Portfolio: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
 
           <div className="flex-shrink-0 w-[85vw] md:w-[550px] h-full flex items-center justify-center px-12 text-center">

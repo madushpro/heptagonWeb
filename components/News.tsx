@@ -24,21 +24,24 @@ const articles = [
 
 const News: React.FC = () => {
   return (
-    <section className="py-24 px-4 md:px-12 max-w-7xl mx-auto" id="our-blog">
-      <div className="text-center mb-16 reveal">
+    <section
+      className="py-20 md:py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-[#0a0d12] dark:border-y dark:border-white/5"
+      id="our-blog"
+    >
+      <div className="text-center mb-12 md:mb-16 reveal">
         <span className="text-orange-500 font-bold tracking-widest uppercase text-sm mb-4 block">
           INSIGHTS THAT DRIVE INNOVATION
         </span>
-        <h2 className="text-4xl md:text-5xl font-black dark:text-white  text-gray-900">
+        <h2 className="text-3xl md:text-5xl font-black dark:text-white text-gray-900">
           News Updates And{" "}
           <span className="text-orange-gradient">Expert Advice</span>
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {articles.map((art, i) => (
           <div key={i} className="group reveal">
-            <div className="relative rounded-[2.5rem] overflow-hidden mb-8 aspect-video border dark:border-white/5  border-black/5 shadow-sm">
+            <div className="relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden mb-6 md:mb-8 aspect-video border dark:border-white/5 border-black/5 shadow-sm">
               <img
                 src={art.img}
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
@@ -66,7 +69,7 @@ const News: React.FC = () => {
                   <span>{art.comments}</span>
                 </div>
               </div>
-              <h3 className="text-2xl font-black mb-6 leading-tight group-hover:text-orange-500 transition-colors dark:text-white  text-gray-900">
+              <h3 className="text-xl md:text-2xl font-black mb-5 md:mb-6 leading-tight group-hover:text-orange-500 transition-colors dark:text-white text-gray-900">
                 {art.title}
               </h3>
               <button className="flex items-center space-x-2 text-sm font-bold text-orange-500 uppercase tracking-widest group">

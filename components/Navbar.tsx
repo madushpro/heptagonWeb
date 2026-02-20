@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 py-5 px-4 md:px-12 flex items-center justify-between border-zinc-100 backdrop-blur-xl shadow-sm">
+    <nav className="fixed top-0 left-0 w-full z-50 py-4 md:py-5 px-3 sm:px-4 md:px-12 flex items-center justify-between border-zinc-100 backdrop-blur-xl shadow-sm">
       <button
         type="button"
         onClick={() => handleNavClick("home")}
@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
         )}
       </button>
 
-      <div className="hidden lg:flex items-center space-x-10 text-xs font-black dark:text-zinc-400 text-zinc-500 uppercase tracking-[0.2em]">
+      <div className="hidden lg:flex items-center space-x-8 xl:space-x-10 text-xs font-black dark:text-zinc-400 text-zinc-500 uppercase tracking-[0.2em]">
         {NAV_ITEMS.map((item) => (
           <button
             key={item.id}
@@ -115,7 +115,7 @@ const Navbar: React.FC = () => {
         <button
           type="button"
           onClick={() => handleNavClick("contact")}
-          className="bg-orange-gradient hover:scale-105 transition-all text-white px-7 py-3 rounded-full flex items-center space-x-2 text-xs font-black shadow-lg shadow-orange-600/30 uppercase tracking-widest"
+          className="hidden bg-orange-gradient hover:scale-105 transition-all text-white px-7 py-3 rounded-full lg:flex items-center space-x-2 text-xs font-black shadow-lg shadow-orange-600/30 uppercase tracking-widest"
         >
           <span>Initialize</span>
           <ArrowRight size={16} />

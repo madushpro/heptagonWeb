@@ -12,9 +12,13 @@ import {
   ArrowRight,
   ChevronRight,
 } from "lucide-react";
+import { useTheme } from "./theme-provider";
+import logo1 from "../assets/Logo1.png";
+import logo2 from "../assets/Logo2.png";
 
 const Footer: React.FC = () => {
   const footerRef = useRef<HTMLElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -36,22 +40,25 @@ const Footer: React.FC = () => {
   return (
     <footer
       ref={footerRef}
-      className="relative pt-32 pb-12 px-4 md:px-12 dark:bg-[#050505]  bg-gray-100 transition-colors duration-500 overflow-hidden"
+      className="relative pt-20 md:pt-32 pb-12 px-4 md:px-12 dark:bg-[#090e14] bg-gray-100 transition-colors duration-500 overflow-hidden border-t dark:border-white/5"
     >
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-orange-900/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-16 mb-16 md:mb-24">
           <div className="footer-col lg:col-span-4">
-            <div className="flex items-center space-x-3 mb-8 group cursor-pointer">
-              <div className="w-12 h-12 bg-orange-gradient rounded-2xl flex items-center justify-center shadow-xl shadow-orange-600/20 group-hover:scale-110 transition-transform duration-500">
-                <span className="font-black text-white text-2xl">H</span>
-              </div>
-              <span className="text-3xl font-black uppercase tracking-tighter dark:text-white  text-gray-900">
-                Heptagon
-              </span>
+            <div className="flex items-center gap-3 mb-6">
+              {theme === "light" ? (
+                <img src={logo1} alt="" className="w-44" />
+              ) : (
+                <img
+                  src={logo2}
+                  alt=""
+                  className="w-24 filter brightness-0 invert"
+                />
+              )}
             </div>
-            <p className="dark:text-gray-400  text-gray-500 leading-relaxed text-lg mb-10 max-w-sm font-medium">
+            <p className="dark:text-gray-400 text-gray-500 leading-relaxed text-base md:text-lg mb-8 md:mb-10 max-w-sm font-medium">
               Constructing superior digital ecosystems through our seven core
               principles of software engineering excellence.
             </p>

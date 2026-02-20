@@ -21,25 +21,25 @@ const steps = [
 
 const Process: React.FC = () => {
   return (
-    <section className="py-24 px-4 md:px-12 max-w-7xl mx-auto overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <section className="py-20 md:py-24 px-4 md:px-12 max-w-7xl mx-auto overflow-hidden dark:bg-[#0b0f14] dark:border-y dark:border-white/5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
         <div className="reveal">
           <span className="text-orange-500 font-bold tracking-widest uppercase text-sm mb-4 block">
             BUILT TO WORK FOR YOU
           </span>
-          <h2 className="text-4xl md:text-5xl font-black mb-12 dark:text-white  text-gray-900">
+          <h2 className="text-3xl md:text-5xl font-black mb-10 md:mb-12 dark:text-white text-gray-900">
             Our Process Your{" "}
             <span className="text-orange-gradient">Solution</span>
           </h2>
 
           <div className="space-y-10">
             {steps.map((step, i) => (
-              <div key={i} className="flex gap-6 group">
+              <div key={i} className="flex gap-4 md:gap-6 group">
                 <div className="flex-shrink-0 w-14 h-14 rounded-2xl dark:bg-white/5  bg-black/5 flex items-center justify-center border dark:border-white/10  border-black/5 group-hover:border-orange-500/50 transition-colors">
                   {step.icon}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2 dark:text-white  text-gray-900">
+                  <h3 className="text-lg md:text-xl font-bold mb-2 dark:text-white text-gray-900">
                     {step.title}
                   </h3>
                   <p className="dark:text-gray-400  text-gray-500 text-sm leading-relaxed max-w-md">
@@ -52,7 +52,7 @@ const Process: React.FC = () => {
         </div>
 
         <div className="relative reveal">
-          <div className="relative z-10 rounded-[3rem] overflow-hidden border dark:border-white/10  border-black/5 shadow-3xl">
+          <div className="relative z-10 rounded-[2rem] md:rounded-[3rem] overflow-hidden border dark:border-white/10 border-black/5 shadow-3xl">
             <img
               src="https://picsum.photos/seed/process/800/800"
               className="w-full grayscale hover:grayscale-0 transition-all duration-1000"

@@ -258,7 +258,7 @@ const Hero: React.FC = () => {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen pt-32 md:pt-48 pb-20 px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto gap-12"
+      className="relative min-h-screen pt-28 md:pt-40 pb-16 md:pb-20 px-4 sm:px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto gap-10 md:gap-12"
     >
       <div className="w-full lg:w-1/2 flex flex-col justify-center z-20 relative">
         <div className="reveal inline-flex items-center space-x-3 dark:bg-white/5 bg-orange-500/5 border dark:border-white/10 border-orange-500/10 rounded-full px-5 py-2 mb-10 w-fit">
@@ -268,12 +268,12 @@ const Hero: React.FC = () => {
           </span>
         </div>
 
-        <h1 className="reveal text-7xl sm:text-8xl md:text-9xl font-black mb-8 leading-[0.85] tracking-tighter uppercase">
+        <h1 className="reveal text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-8 leading-[0.9] sm:leading-[0.85] tracking-tighter uppercase">
           Design <br />
           <span className="text-orange-gradient">Reality.</span>
         </h1>
 
-        <p className="reveal text-xl md:text-2xl max-w-xl mb-12 leading-relaxed font-medium dark:text-zinc-400  text-zinc-500">
+        <p className="reveal text-lg md:text-2xl max-w-xl mb-10 md:mb-12 leading-relaxed font-medium dark:text-zinc-400 text-zinc-500">
           Architecting elite digital ecosystems through the seven pillars of
           software excellence. Uncompromising performance, definitive design.
         </p>

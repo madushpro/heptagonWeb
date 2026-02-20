@@ -14,16 +14,20 @@ import News from './components/News';
 import ContactCTA from './components/ContactCTA';
 import Footer from './components/Footer';
 import ThreeBackground from './components/ThreeBackground';
+import Projects from './components/Projects';
 import { useTheme } from './components/theme-provider';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const App: React.FC = () => {
   const { theme } = useTheme();
+  const isProjectsPage = window.location.pathname === '/projects';
   const mainRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const refreshScrollTriggers = () => ScrollTrigger.refresh();
+
     const ctx = gsap.context(() => {
       gsap.utils.toArray('.reveal').forEach((elem: any) => {
         gsap.from(elem, {
@@ -35,6 +39,7 @@ const App: React.FC = () => {
             trigger: elem,
             start: 'top 90%',
             toggleActions: 'play none none reverse',
+            invalidateOnRefresh: true,
           },
         });
       });
@@ -61,7 +66,16 @@ const App: React.FC = () => {
       });
     }, mainRef);
 
-    return () => ctx.revert();
+    const timer = window.setTimeout(refreshScrollTriggers, 120);
+    window.addEventListener('load', refreshScrollTriggers);
+    window.addEventListener('portfolio-scroll-ready', refreshScrollTriggers);
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('load', refreshScrollTriggers);
+      window.removeEventListener('portfolio-scroll-ready', refreshScrollTriggers);
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -83,16 +97,22 @@ const App: React.FC = () => {
       <Navbar />
 
       <main className="relative z-10">
-        <Hero />
-        <Brands />
-        <About />
-        <Services />
-        <Process />
-        <Portfolio />
-        <Experience />
-        <Testimonials />
-        <News />
-        <ContactCTA />
+        {isProjectsPage ? (
+          <Projects />
+        ) : (
+          <>
+            <Hero />
+            <Brands />
+            <About />
+            <Services />
+            <Process />
+            <Portfolio />
+            <Experience />
+            <Testimonials />
+            <News />
+            <ContactCTA />
+          </>
+        )}
       </main>
 
       <Footer />

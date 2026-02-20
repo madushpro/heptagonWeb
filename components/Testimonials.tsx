@@ -3,18 +3,18 @@ import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const Testimonials: React.FC = () => {
   return (
-    <section className="py-24 px-4 md:px-12 dark:bg-[#0a0a0a]  bg-gray-50 relative overflow-hidden transition-colors duration-500">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section className="py-20 md:py-24 px-4 md:px-12 dark:bg-[#080b0f] bg-gray-50 relative overflow-hidden transition-colors duration-500 dark:border-y dark:border-white/5">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
         <div className="reveal">
           <span className="text-orange-500 font-bold tracking-widest uppercase text-sm mb-4 block">
             WHAT OUR CLIENTS SAY
           </span>
-          <h2 className="text-4xl md:text-5xl font-black mb-8 dark:text-white  text-gray-900">
+          <h2 className="text-3xl md:text-5xl font-black mb-8 dark:text-white text-gray-900">
             What Our Clients Say Results{" "}
             <span className="text-orange-gradient">From Clients</span>
           </h2>
 
-          <div className="relative group max-w-md">
+          <div className="relative group max-w-xs sm:max-w-md">
             <div className="absolute inset-0 bg-orange-gradient blur-[80px] opacity-10 -z-1"></div>
             <div className="rounded-full overflow-hidden aspect-square border-[8px] dark:border-white/5  border-black/5 relative shadow-xl">
               <img
@@ -22,8 +22,8 @@ const Testimonials: React.FC = () => {
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 alt="client"
               />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-orange-gradient rounded-full flex items-center justify-center text-white">
-                <Quote size={40} fill="currentColor" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-24 md:h-24 bg-orange-gradient rounded-full flex items-center justify-center text-white">
+                <Quote size={28} fill="currentColor" />
               </div>
             </div>
           </div>
@@ -40,14 +40,14 @@ const Testimonials: React.FC = () => {
               />
             ))}
           </div>
-          <p className="text-2xl md:text-3xl font-medium leading-snug dark:text-gray-300  text-gray-600 italic mb-10">
+          <p className="text-xl md:text-3xl font-medium leading-snug dark:text-gray-300 text-gray-600 italic mb-8 md:mb-10">
             "Partnering with this team has been a game changer for our business.
             From the very first meeting, they demonstrated deep understanding of
             our industry and delivered custom solution that not only met but
             exceeded our expectation"
           </p>
 
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div className="flex items-center space-x-4">
               <img
                 src="https://picsum.photos/seed/user12/100/100"

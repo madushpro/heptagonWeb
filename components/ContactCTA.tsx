@@ -41,9 +41,9 @@ const ContactCTA: React.FC = () => {
     <section
       id="contact"
       ref={containerRef}
-      className="py-32 px-4 md:px-12 overflow-hidden dark:bg-[#050505]  bg-white transition-colors duration-500"
+      className="py-20 md:py-32 px-4 md:px-12 overflow-hidden dark:bg-[#06090d] bg-white transition-colors duration-500 dark:border-y dark:border-white/5"
     >
-      <div className="max-w-[1600px] mx-auto relative rounded-[4rem] dark:bg-[#0a0a0a]  bg-[#f3f4f6] border dark:border-white/5  border-black/5 h-[600px] md:h-[800px] flex items-center justify-center overflow-hidden shadow-2xl">
+      <div className="max-w-[1600px] mx-auto relative rounded-[2rem] md:rounded-[4rem] dark:bg-[#0f141a] bg-[#f3f4f6] border dark:border-white/10 border-black/5 min-h-[520px] md:h-[800px] flex items-center justify-center overflow-hidden shadow-2xl">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-600/20 blur-[150px] rounded-full"></div>
           <div className="absolute top-0 left-0 w-full h-full opacity-20 mix-blend-overlay dark:bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]  bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')]"></div>
@@ -70,7 +70,7 @@ const ContactCTA: React.FC = () => {
 
           <h2
             ref={textRef}
-            className="cta-reveal text-5xl md:text-9xl font-black mb-16 tracking-tighter leading-[0.9] dark:text-white  text-gray-900"
+            className="cta-reveal text-3xl sm:text-5xl md:text-9xl font-black mb-10 md:mb-16 tracking-tighter leading-[0.95] md:leading-[0.9] dark:text-white text-gray-900"
           >
             HAVE A PROJECT <br />
             <span className="text-orange-gradient">IN MIND?</span>
@@ -79,7 +79,7 @@ const ContactCTA: React.FC = () => {
           <div className="cta-reveal flex justify-center">
             <div
               ref={circleRef}
-              className="relative group cursor-pointer w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 max-w-full"
+              className="relative group cursor-pointer w-28 h-28 sm:w-40 sm:h-40 md:w-56 md:h-56 max-w-full"
             >
               <div className="absolute inset-0 animate-[spin_12s_linear_infinite] [animation-play-state:running] group-hover:[animation-play-state:paused]">
                 <svg
