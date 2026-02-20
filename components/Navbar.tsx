@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
         {theme === "light" ? (
           <img src={logo1} alt="" className="w-24" />
         ) : (
-          <img src={logo2} alt="" className="w-24 filter brightness-0 invert" />
+          <img src={logo2} alt="" className="w-24" />
         )}
       </button>
 
@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
         <div className="relative hidden sm:block">
           <button
             type="button"
-            onClick={() => setSearchOpen((prev) => !prev)}
+            onClick={() => setSearchOpen((prev: any) => !prev)}
             className="flex items-center justify-center w-10 h-10 dark:text-zinc-400 text-zinc-600 hover:text-orange-500 transition-colors"
             aria-label="Toggle section search"
           >
