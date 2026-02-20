@@ -9,7 +9,7 @@ const stats = [
 
 const Experience: React.FC = () => {
   return (
-    <section className="py-20 md:py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-[#0a0e13] dark:border-y dark:border-white/5">
+    <section className="py-20 md:py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-[#0a0e13] bg-white dark:border-y dark:border-white/5">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
         <div className="relative reveal">
           <div className="relative w-full aspect-square max-w-md mx-auto">
@@ -20,7 +20,9 @@ const Experience: React.FC = () => {
               alt="mobile dev"
             />
             <div className="absolute -bottom-4 sm:-bottom-10 right-0 sm:-right-10 dark:bg-[#111] bg-white border dark:border-white/10 border-black/5 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-2xl reveal">
-              <p className="text-orange-500 font-bold text-2xl sm:text-4xl mb-1">10k+</p>
+              <p className="text-orange-500 font-bold text-2xl sm:text-4xl mb-1">
+                10k+
+              </p>
               <p className="dark:text-gray-400  text-gray-500 text-xs uppercase font-bold tracking-widest">
                 Active Users
               </p>

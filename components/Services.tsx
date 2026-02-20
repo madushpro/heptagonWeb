@@ -38,7 +38,7 @@ const services = [
 const Services: React.FC = () => {
   return (
     <section
-      className="py-20 md:py-32 px-4 md:px-12 dark:bg-[#0d0d0d] bg-zinc-50 transition-colors"
+      className="py-20 md:py-32 px-4 md:px-12 dark:bg-zinc-900 bg-zinc-50 transition-colors"
       id="our-service"
     >
       <div className="max-w-7xl mx-auto">
@@ -96,20 +96,72 @@ const ServiceCard: React.FC<{
   title: string;
   desc: string;
 }> = ({ icon, title, desc }) => (
-  <div className="p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] glass-card transition-all group reveal hover:border-orange-500/50 hover:shadow-2xl dark:hover:bg-zinc-900/50 bg-white dark:bg-zinc-900 shadow-xl shadow-zinc-200/40 dark:shadow-black/20">
-    <div className="mb-8 p-5 w-20 h-20 dark:bg-white/5  bg-zinc-50 rounded-2xl  flex items-center justify-center group-hover:bg-orange-500 group-hover:text-white transition-all duration-500">
+  <div
+    className="
+    relative overflow-hidden
+    p-6 md:p-10 
+    rounded-[2rem] md:rounded-[2.5rem]
+    transition-all duration-500 ease-out
+    group reveal
+    
+    /* Glass Base */
+    bg-white/40 dark:bg-zinc-900/40
+    backdrop-blur-2xl
+    border border-white/30 dark:border-white/10
+    
+    /* Soft Gradient Border Glow */
+    before:absolute before:inset-0 before:rounded-[2.5rem]
+    before:p-[1px]
+    before:bg-gradient-to-br 
+    before:from-orange-400/40 
+    before:via-white/20 
+    before:to-orange-600/40
+    before:opacity-0
+    before:transition-opacity before:duration-500
+    before:-z-10
+    
+    /* Shadow */
+    shadow-[0_20px_60px_-10px_rgba(0,0,0,0.15)]
+    dark:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.6)]
+    
+    hover:scale-[1.03]
+    hover:shadow-[0_25px_80px_-10px_rgba(249,115,22,0.35)]
+    
+    hover:before:opacity-100
+  "
+  >
+    <div
+      className="mb-8 p-5 w-20 h-20 
+      bg-white/50 dark:bg-white/5 
+      backdrop-blur-lg
+      rounded-2xl
+      flex items-center justify-center
+      transition-all duration-500
+      group-hover:bg-orange-500
+      group-hover:text-white
+      group-hover:shadow-lg group-hover:shadow-orange-500/40"
+    >
       {icon}
     </div>
-    <h3 className="text-xl md:text-2xl font-black mb-5 dark:text-white text-zinc-950 uppercase tracking-tight">
+
+    <h3
+      className="text-xl md:text-2xl font-black mb-5 
+      text-zinc-950 dark:text-white 
+      uppercase tracking-tight
+      transition-colors duration-300
+      group-hover:text-orange-500"
+    >
       {title}
     </h3>
-    <p className="text-sm leading-relaxed mb-8 dark:text-zinc-400  text-zinc-500 font-medium">
+
+    <p
+      className="text-sm leading-relaxed mb-8 
+      text-zinc-600 dark:text-zinc-400 
+      font-medium
+      transition-colors duration-300"
+    >
       {desc}
     </p>
-    {/* <button className="flex items-center space-x-3 text-[10px] font-black uppercase tracking-[0.3em] text-orange-500 hover:text-orange-400 transition-colors">
-      <span>Read Specification</span>
-      <ArrowRight size={14} />
-    </button> */}
   </div>
 );
 

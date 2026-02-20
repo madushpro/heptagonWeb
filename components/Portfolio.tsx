@@ -78,7 +78,7 @@ const Portfolio: React.FC = () => {
   return (
     <div
       ref={sectionRef}
-      className="dark:bg-[#070a0e] bg-[#f8f8f8] overflow-hidden transition-colors duration-500 dark:border-y dark:border-white/5"
+      className="dark:bg-zinc-900 bg-[#f8f8f8] overflow-hidden transition-colors duration-500 dark:border-y dark:border-white/5"
       id="our-work"
     >
       <div className="py-16 md:py-0 md:h-screen flex flex-col justify-center relative">
