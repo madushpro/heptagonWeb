@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import ThreeBackground from "./components/ThreeBackground";
 import Projects from "./components/Projects";
 import { useTheme } from "./components/theme-provider";
+import Roadmap from "./components/RoadMap";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -112,6 +113,7 @@ const App: React.FC = () => {
             <About />
             <Services />
             <Process />
+            <Roadmap />
             <Portfolio />
             <Experience />
             <Testimonials />

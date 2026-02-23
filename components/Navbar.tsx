@@ -47,16 +47,16 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 py-4 md:py-5 px-3 sm:px-4 md:px-12 flex items-center justify-between border-zinc-100 backdrop-blur-xl shadow-sm">
+    <nav className="fixed top-0 left-0 w-full z-50 py-4 md:py-4 px-3 sm:px-4 md:px-12 flex items-center justify-between border-zinc-100 backdrop-blur-xl shadow-sm">
       <button
         type="button"
         onClick={() => handleNavClick("home")}
         className="flex items-center space-x-2 group cursor-pointer"
       >
         {theme === "light" ? (
-          <img src={logo1} alt="" className="w-32" />
+          <img src={logo1} alt="" className="w-24" />
         ) : (
-          <img src={logo2} alt="" className="w-32" />
+          <img src={logo2} alt="" className="w-24" />
         )}
       </button>
 
