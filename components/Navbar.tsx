@@ -15,6 +15,7 @@ const NAV_ITEMS = [
 
 const PAGE_LINKS = [
   { label: "Meet The Crew", href: "/meet-the-crew" },
+  { label: "Careers", href: "/careers" },
 ];
 
 const Navbar: React.FC = () => {
