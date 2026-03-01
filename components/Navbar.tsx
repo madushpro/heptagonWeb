@@ -32,6 +32,10 @@ const Navbar: React.FC = () => {
   };
 
   const handleNavClick = (id: string) => {
+    if (window.location.pathname !== "/") {
+      window.location.href = `/#${id}`;
+      return;
+    }
     scrollToSection(id);
     setMobileOpen(false);
     setSearchOpen(false);
