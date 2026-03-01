@@ -52,6 +52,15 @@ const testimonials: Testimonial[] = [
     avatar: "",
     mainImage: testimonialImg4,
   },
+  {
+    id: 5,
+    name: "J.D.S.P Wickramarathne",
+    role: "Director",
+    company: "CFC Healthcare",
+    text: "We have had a strong bond of trust with them since 2014; they are the finest software provider for our entire CFC Healthcare pharmaceutical chain. I must say they are the top software provider in the pharmaceutical industry.",
+    avatar: "",
+    mainImage: testimonialImg3,
+  },
 ];
 
 const AUTO_SCROLL_INTERVAL = 5000;
