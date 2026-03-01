@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Users, Code2, Smartphone, BarChart3, HeartHandshake, Layers } from "lucide-react";
+import { Users, Code2, Smartphone, BarChart3, HeartHandshake, Layers, LifeBuoy } from "lucide-react";
 import { useTheme } from "./theme-provider";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 interface TeamMember {
     name: string;
     role: string;
-    dept: string;
+    dept: string | string[];
     image?: string;
     initials: string;
     color: string;
@@ -18,48 +18,42 @@ interface TeamMember {
 
 // ── Department config ──────────────────────────────────────────────────────
 const DEPARTMENTS = [
-    { id: "all", label: "All", Icon: Users, count: 15 },
-    { id: "management", label: "Management", Icon: Layers, count: 3 },
-    { id: "hr", label: "HR Team", Icon: HeartHandshake, count: 1 },
-    { id: "business", label: "Business Analysis", Icon: BarChart3, count: 1 },
-    { id: "technical", label: "Technical Team", Icon: Code2, count: 2 },
-    { id: "mobile", label: "Mobile Team", Icon: Smartphone, count: 2 },
-    { id: "software", label: "Software Engineering", Icon: Code2, count: 6 },
+    { id: "all", label: "All", Icon: Users },
+    { id: "management", label: "Management", Icon: Layers },
+    { id: "hr", label: "HR Team", Icon: HeartHandshake },
+    { id: "business", label: "Business Analysis", Icon: BarChart3 },
+    { id: "support", label: "Support Team", Icon: LifeBuoy },
+    { id: "mobile", label: "Mobile Team", Icon: Smartphone },
+    { id: "software", label: "Software Engineering", Icon: Code2 },
 ];
 
 // ── Team data ──────────────────────────────────────────────────────────────
 const TEAM: TeamMember[] = [
-    // Technical
-    { name: "Lakshan Bhanuka", role: "Head of Technical", dept: "technical", initials: "LB", color: "#f97316" },
-    { name: "H.P Thilanka", role: "Technical Officer", dept: "technical", initials: "HT", color: "#ea580c" },
     // Management
     { name: "N.L Aluthge", role: "Director", dept: "management", initials: "NA", color: "#3b82f6" },
     { name: "A.M Priyantha Adhikaru", role: "Director", dept: "management", initials: "AP", color: "#2563eb" },
-    { name: "Mindada Weerasiri", role: "Director", dept: "management", initials: "MW", color: "#1d4ed8" },
-    // Mobile
-    { name: "Mindada Weerasiri", role: "Head of Mobile", dept: "mobile", initials: "MW", color: "#8b5cf6" },
-    { name: "Shenan Rathnayaka", role: "Associate Software Engineer", dept: "mobile", initials: "SR", color: "#7c3aed" },
-    // Business Analysis
-    { name: "Nirul Helitha", role: "Associate Business Analyst", dept: "business", initials: "NH", color: "#10b981" },
+    { name: "Mindada Weerasiri", role: "Director", dept: ["management", "mobile"], initials: "MW", color: "#1d4ed8" },
+
     // HR
     { name: "Hasitha Erandi", role: "Head of HR", dept: "hr", initials: "HE", color: "#ec4899" },
-    // Software Engineering
+
+    // Business Analysis
+    { name: "Nirul Helitha", role: "Associate Business Analyst", dept: "business", initials: "NH", color: "#10b981" },
+
+    // Support Team
+    { name: "Lakshan Bhanuka", role: "Head of Technical", dept: "support", initials: "LB", color: "#f97316" },
+    { name: "H.P Thilanka", role: "Technical Officer", dept: "support", initials: "HT", color: "#ea580c" },
+
+    // Software Engineering & Mobile (Reordered by request)
     { name: "Yasas Wasala", role: "Senior Software Engineer", dept: "software", initials: "YW", color: "#f97316" },
     { name: "Avishka Ranasinha", role: "Software Engineer", dept: "software", initials: "AR", color: "#ea580c" },
     { name: "Pasindu Bhanuka", role: "Associate Software Engineer", dept: "software", initials: "PB", color: "#fb923c" },
+    { name: "Shenan Rathnayaka", role: "Associate Software Engineer", dept: "mobile", initials: "SR", color: "#7c3aed" },
     { name: "Madusha Thassara", role: "Associate Software Engineer", dept: "software", initials: "MT", color: "#f97316" },
     { name: "Malindu Sanchana", role: "Associate Software Engineer", dept: "software", initials: "MS", color: "#ea580c" },
     { name: "Minidu Tharinda", role: "Associate Software Engineer", dept: "software", initials: "MT", color: "#fb923c" },
 ];
 
-const DEPT_LABELS: Record<string, string> = {
-    technical: "Technical Team",
-    management: "Management",
-    mobile: "Mobile Team",
-    business: "Business Analysis",
-    hr: "HR Team",
-    software: "Software Engineering",
-};
 
 // ── Avatar component ───────────────────────────────────────────────────────
 const Avatar: React.FC<{ member: TeamMember }> = ({ member }) => (
@@ -75,26 +69,32 @@ const Avatar: React.FC<{ member: TeamMember }> = ({ member }) => (
 );
 
 // ── Card component ─────────────────────────────────────────────────────────
-const MemberCard: React.FC<{ member: TeamMember; index: number }> = ({ member, index }) => (
-    <div
-        className="crew-card h-full dark:bg-zinc-900/80 bg-white rounded-2xl overflow-hidden border dark:border-white/5 border-black/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center p-5 sm:p-6"
-    >
-        {/* Avatar */}
-        <div className="mb-4 w-full">
-            <Avatar member={member} />
+const MemberCard: React.FC<{ member: TeamMember; index: number; activeTab: string }> = ({ member, index, activeTab }) => {
+    const displayRole = (member.name === "Mindada Weerasiri" && activeTab === "mobile")
+        ? "Head of Mobile"
+        : member.role;
+
+    return (
+        <div
+            className="crew-card h-full dark:bg-zinc-900/80 bg-white rounded-2xl overflow-hidden border dark:border-white/5 border-black/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center p-5 sm:p-6"
+        >
+            {/* Avatar */}
+            <div className="mb-4 w-full">
+                <Avatar member={member} />
+            </div>
+
+            {/* Name – orange */}
+            <h3 className="font-bold text-sm leading-tight mb-1" style={{ color: "#f97316" }}>
+                {member.name}
+            </h3>
+
+            {/* Designation – dark */}
+            <p className="text-xs font-semibold dark:text-gray-300 text-gray-700 leading-snug">
+                {displayRole}
+            </p>
         </div>
-
-        {/* Name – orange */}
-        <h3 className="font-bold text-sm leading-tight mb-1" style={{ color: "#f97316" }}>
-            {member.name}
-        </h3>
-
-        {/* Designation – dark */}
-        <p className="text-xs font-semibold dark:text-gray-300 text-gray-700 leading-snug">
-            {member.role}
-        </p>
-    </div>
-);
+    );
+};
 
 // ── Main Page ──────────────────────────────────────────────────────────────
 const MeetTheCrew: React.FC = () => {
@@ -104,7 +104,7 @@ const MeetTheCrew: React.FC = () => {
 
     const filtered = activeTab === "all"
         ? TEAM
-        : TEAM.filter((m) => m.dept === activeTab);
+        : TEAM.filter((m) => Array.isArray(m.dept) ? m.dept.includes(activeTab) : m.dept === activeTab);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -176,39 +176,13 @@ const MeetTheCrew: React.FC = () => {
             {/* ── Cards Grid ── */}
             <div className="px-4 md:px-12 pb-20">
                 <div className="max-w-7xl mx-auto">
-
-                    {/* Group by department when "all" is selected */}
-                    {activeTab === "all" ? (
-                        DEPARTMENTS.slice(1).map(({ id: dept }) => {
-                            const members = TEAM.filter((m) => m.dept === dept);
-                            if (members.length === 0) return null;
-                            return (
-                                <div key={dept} className="mb-14">
-                                    <div className="flex items-center gap-3 mb-6">
-                                        <h2 className="text-sm font-black uppercase tracking-[0.2em] dark:text-white text-gray-900">
-                                            {DEPT_LABELS[dept]}
-                                        </h2>
-                                        <div className="h-px flex-1 dark:bg-white/5 bg-black/5" />
-                                    </div>
-                                    <div className="flex flex-wrap justify-center items-stretch gap-4 sm:gap-6">
-                                        {members.map((member, i) => (
-                                            <div key={`${dept}-${i}`} className="w-40 sm:w-48">
-                                                <MemberCard member={member} index={i} />
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            );
-                        })
-                    ) : (
-                        <div className="flex flex-wrap justify-center items-stretch gap-4 sm:gap-6">
-                            {filtered.map((member, i) => (
-                                <div key={i} className="w-40 sm:w-48">
-                                    <MemberCard member={member} index={i} />
-                                </div>
-                            ))}
-                        </div>
-                    )}
+                    <div className="flex flex-wrap justify-center items-stretch gap-4 sm:gap-6">
+                        {filtered.map((member, i) => (
+                            <div key={`${member.name}-${i}`} className="w-40 sm:w-48">
+                                <MemberCard member={member} index={i} activeTab={activeTab} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
