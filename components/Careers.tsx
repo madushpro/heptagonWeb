@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Briefcase, MapPin, Clock, Calendar, ChevronRight, Upload, Send, CheckCircle2 } from "lucide-react";
+import { Briefcase, MapPin, Clock, Calendar, ChevronRight, Upload, Send, CheckCircle2, X, AlertCircle } from "lucide-react";
 import { gsap } from "gsap";
 import { useTheme } from "./theme-provider";
 
@@ -10,6 +10,7 @@ interface JobPost {
     location: string;
     type: string;
     date: string;
+    closingDate: string;
     description: string;
     responsibilities: string[];
     requirements: string[];
@@ -22,7 +23,8 @@ const JOBS: JobPost[] = [
         department: "Quality Assurance",
         location: "Colombo (On-site)",
         type: "Full-time",
-        date: "2024-03-01",
+        date: "2026-03-01",
+        closingDate: "2026-03-31",
         description: "We are seeking a detail-oriented QA Engineer to join our team. You will be responsible for ensuring the quality and reliability of our enterprise software solutions, specifically focusing on .NET applications.",
         responsibilities: [
             "Develop and execute comprehensive test plans and test cases",
@@ -44,6 +46,8 @@ const JOBS: JobPost[] = [
 const Careers: React.FC = () => {
     const { theme } = useTheme();
     const [selectedJob, setSelectedJob] = useState<string>("");
+    const [fileName, setFileName] = useState<string>("");
+    const [activeModalJob, setActiveModalJob] = useState<JobPost | null>(null);
     const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
     const formRef = useRef<HTMLFormElement>(null);
     const pageRef = useRef<HTMLDivElement>(null);
@@ -65,6 +69,17 @@ const Careers: React.FC = () => {
         return () => ctx.revert();
     }, []);
 
+    useEffect(() => {
+        if (activeModalJob) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [activeModalJob]);
+
     const handleApply = (title: string) => {
         setSelectedJob(title);
         const formElement = document.getElementById("application-form");
@@ -79,17 +94,53 @@ const Careers: React.FC = () => {
         e.preventDefault();
         setFormStatus("submitting");
 
-        // Simulate API call
-        // In a real scenario, you would use Formspree, EmailJS, or your own backend API
-        // For example:
-        // const formData = new FormData(formRef.current!);
-        // await fetch('https://formspree.io/f/your-form-id', { method: 'POST', body: formData });
+        // --- REAL EMAIL SUBMISSION (Web3Forms) ---
+        const WEB3FORMS_ACCESS_KEY = "de6e0595-c062-43fa-b11d-7c2f0351df91";
+        const formEndpoint = "https://api.web3forms.com/submit";
 
-        setTimeout(() => {
-            setFormStatus("success");
-            if (formRef.current) formRef.current.reset();
-            setTimeout(() => setFormStatus("idle"), 5000);
-        }, 1500);
+        try {
+            const formData = new FormData(formRef.current!);
+
+            // Add Web3Forms Access Key
+            formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+            formData.append("subject", `New Job Application: ${selectedJob} - from Heptagon Web`);
+            formData.append("from_name", "Heptagon Careers");
+
+            // Clean up empty file field
+            const fileInput = formRef.current?.querySelector('input[type="file"]') as HTMLInputElement;
+            if (fileInput && (!fileInput.files || fileInput.files.length === 0)) {
+                formData.delete("attachment");
+            }
+
+            const response = await fetch(formEndpoint, {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                setFormStatus("success");
+                setFileName("");
+                if (formRef.current) formRef.current.reset();
+                setTimeout(() => setFormStatus("idle"), 5000);
+            } else {
+                let errorMessage = "Submission failed";
+                try {
+                    const contentType = response.headers.get("content-type");
+                    if (contentType && contentType.includes("application/json")) {
+                        const data = await response.json();
+                        errorMessage = data.error || data.message || errorMessage;
+                    }
+                } catch (e) {
+                    console.error("Could not parse error response", e);
+                }
+                throw new Error(errorMessage);
+            }
+        } catch (error: any) {
+            console.error("Submission Error:", error);
+            // If it's a rate limit error or something similar, it might show up here
+            alert(`Oops! ${error.message || "There was a problem submitting your form."} Please try again later or email us directly.`);
+            setFormStatus("idle");
+        }
     };
 
     return (
@@ -137,19 +188,29 @@ const Careers: React.FC = () => {
                                     <Clock size={14} className="text-orange-500" />
                                     {job.department}
                                 </div>
+                                <div className="flex items-center gap-1.5">
+                                    <Calendar size={14} className="text-orange-500" />
+                                    <span className="text-red-500">Closes: {job.closingDate}</span>
+                                </div>
                             </div>
 
                             <p className="dark:text-gray-400 text-gray-500 text-sm mb-8 leading-relaxed line-clamp-3">
                                 {job.description}
                             </p>
 
-                            <div className="mt-auto pt-6 border-t dark:border-white/5 border-black/5">
+                            <div className="mt-auto pt-6 border-t dark:border-white/5 border-black/5 flex gap-3">
+                                <button
+                                    onClick={() => setActiveModalJob(job)}
+                                    className="flex-1 py-4 rounded-2xl bg-white dark:bg-white/5 border dark:border-white/10 border-black/10 font-bold uppercase tracking-widest text-[10px] hover:bg-zinc-800 dark:hover:bg-white/10 transition-all duration-300"
+                                >
+                                    Details
+                                </button>
                                 <button
                                     onClick={() => handleApply(job.title)}
-                                    className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl bg-white dark:bg-white/5 border dark:border-white/10 border-black/10 font-bold uppercase tracking-widest text-xs hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all duration-300"
+                                    className="flex-[2] flex items-center justify-center gap-2 py-4 rounded-2xl bg-orange-gradient text-white font-bold uppercase tracking-widest text-[10px] hover:scale-105 transition-all duration-300 shadow-lg shadow-orange-500/20"
                                 >
-                                    Apply Now
-                                    <ChevronRight size={16} />
+                                    Apply
+                                    <ChevronRight size={14} />
                                 </button>
                             </div>
                         </div>
@@ -169,7 +230,7 @@ const Careers: React.FC = () => {
                         </h2>
                         <p className="dark:text-gray-400 text-gray-600 font-medium">
                             Fill out the form below and our HR team will get back to you soon.
-                            You can also email us directly at <span className="text-orange-500">info@heptagon.lk</span>
+                            You can also email us directly at <span className="text-orange-500">heptagon.madushaintern@gmail.com</span>
                         </p>
                     </div>
 
@@ -180,6 +241,7 @@ const Careers: React.FC = () => {
                             <input
                                 required
                                 type="text"
+                                name="name"
                                 placeholder="E.g. Yasas Wasala"
                                 className="w-full px-6 py-4 rounded-2xl dark:bg-white/5 bg-gray-50 border dark:border-white/10 border-black/5 outline-none focus:border-orange-500 transition-colors dark:text-white"
                             />
@@ -191,6 +253,7 @@ const Careers: React.FC = () => {
                             <input
                                 required
                                 type="email"
+                                name="email"
                                 placeholder="you@example.com"
                                 className="w-full px-6 py-4 rounded-2xl dark:bg-white/5 bg-gray-50 border dark:border-white/10 border-black/5 outline-none focus:border-orange-500 transition-colors dark:text-white"
                             />
@@ -202,6 +265,7 @@ const Careers: React.FC = () => {
                             <input
                                 required
                                 type="text"
+                                name="job_title"
                                 value={selectedJob}
                                 onChange={(e) => setSelectedJob(e.target.value)}
                                 placeholder="E.g. Senior Software Engineer"
@@ -214,18 +278,47 @@ const Careers: React.FC = () => {
                             <label className="text-xs font-bold uppercase tracking-widest dark:text-gray-400 text-gray-500 ml-2">Attach CV / Resume</label>
                             <div className="relative group">
                                 <input
-                                    required
                                     type="file"
+                                    name="attachment"
+                                    onChange={(e) => {
+                                        const file = e.target.files?.[0];
+                                        if (file) setFileName(file.name);
+                                    }}
                                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                                 />
                                 <div className="w-full px-6 py-10 rounded-2xl border-2 border-dashed dark:border-white/10 border-black/10 dark:bg-white/5 bg-gray-50 flex flex-col items-center justify-center gap-3 group-hover:border-orange-500/50 transition-all">
-                                    <Upload className="text-orange-500" size={32} />
-                                    <p className="text-sm font-bold dark:text-gray-400 text-gray-500">
-                                        Click to upload or drag and drop
-                                    </p>
-                                    <p className="text-[10px] text-gray-400 font-medium">
-                                        PDF, DOCX up to 10MB
-                                    </p>
+                                    {fileName ? (
+                                        <>
+                                            <CheckCircle2 className="text-green-500" size={32} />
+                                            <p className="text-sm font-bold text-green-500">
+                                                {fileName}
+                                            </p>
+                                            <button
+                                                type="button"
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    setFileName("");
+                                                    if (formRef.current) {
+                                                        const fileInput = formRef.current.querySelector('input[type="file"]') as HTMLInputElement;
+                                                        if (fileInput) fileInput.value = "";
+                                                    }
+                                                }}
+                                                className="text-[10px] uppercase font-black text-gray-400 hover:text-orange-500 transition-colors"
+                                            >
+                                                Change File
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Upload className="text-orange-500" size={32} />
+                                            <p className="text-sm font-bold dark:text-gray-400 text-gray-500">
+                                                Click to upload or drag and drop
+                                            </p>
+                                            <p className="text-[10px] text-gray-400 font-medium">
+                                                PDF, DOCX up to 10MB
+                                            </p>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -235,6 +328,7 @@ const Careers: React.FC = () => {
                             <label className="text-xs font-bold uppercase tracking-widest dark:text-gray-400 text-gray-500 ml-2">Cover Message (Optional)</label>
                             <textarea
                                 rows={4}
+                                name="message"
                                 placeholder="Tell us about yourself and why you'd be a great fit..."
                                 className="w-full px-6 py-4 rounded-2xl dark:bg-white/5 bg-gray-50 border dark:border-white/10 border-black/5 outline-none focus:border-orange-500 transition-colors dark:text-white resize-none"
                             />
@@ -270,6 +364,120 @@ const Careers: React.FC = () => {
                     </form>
                 </div>
             </div>
+            {/* --- Modal Overlays --- */}
+            {activeModalJob && (
+                <div className="fixed inset-0 z-[1000] flex items-end md:items-center justify-center px-4 py-8 md:p-12 lg:p-20 pb-12 md:pb-12">
+                    <div
+                        className="absolute inset-0 bg-black/80 backdrop-blur-xl animate-in fade-in duration-300"
+                        onClick={() => setActiveModalJob(null)}
+                    />
+                    <div className="relative w-full max-w-4xl max-h-[85vh] dark:bg-zinc-900 bg-white rounded-[2rem] md:rounded-[3rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-y-auto border dark:border-white/10 border-black/10 animate-in zoom-in-95 duration-300 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                        {/* Modal Header */}
+                        <div className="sticky top-0 z-10 p-5 md:p-8 flex justify-between items-center dark:bg-zinc-900 bg-white border-b dark:border-white/5 border-black/5">
+                            <div className="flex items-center gap-4">
+                                <div className="p-2.5 md:p-3 rounded-xl md:rounded-2xl bg-orange-gradient text-white shadow-lg">
+                                    <Briefcase size={20} className="md:w-6 md:h-6" />
+                                </div>
+                                <h2 className="text-lg md:text-3xl font-black dark:text-white text-gray-900 leading-tight">
+                                    {activeModalJob.title}
+                                </h2>
+                            </div>
+                            <button
+                                onClick={() => setActiveModalJob(null)}
+                                className="w-10 h-10 md:w-12 md:h-12 rounded-full dark:bg-white/5 bg-gray-100 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all duration-300"
+                            >
+                                <X size={20} />
+                            </button>
+                        </div>
+
+                        {/* Modal Content */}
+                        <div className="p-6 md:p-12">
+                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-16">
+                                <div className="lg:col-span-2">
+                                    <section className="mb-12">
+                                        <h4 className="text-xs font-black uppercase tracking-widest text-orange-500 mb-5 flex items-center gap-2">
+                                            <span className="w-6 h-px bg-orange-500/30" />
+                                            About the Role
+                                        </h4>
+                                        <p className="dark:text-gray-300 text-gray-600 text-base md:text-lg leading-relaxed">
+                                            {activeModalJob.description}
+                                        </p>
+                                    </section>
+
+                                    <section className="mb-12">
+                                        <h4 className="text-xs font-black uppercase tracking-widest text-orange-500 mb-6 flex items-center gap-2">
+                                            <span className="w-6 h-px bg-orange-500/30" />
+                                            Key Responsibilities
+                                        </h4>
+                                        <ul className="space-y-4">
+                                            {activeModalJob.responsibilities.map((res, i) => (
+                                                <li key={i} className="flex gap-4 dark:text-gray-400 text-gray-600">
+                                                    <CheckCircle2 size={18} className="text-orange-500 flex-shrink-0 mt-1" />
+                                                    <span className="font-medium text-sm md:text-base">{res}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </section>
+
+                                    <section>
+                                        <h4 className="text-xs font-black uppercase tracking-widest text-orange-500 mb-6 flex items-center gap-2">
+                                            <span className="w-6 h-px bg-orange-500/30" />
+                                            What You Need
+                                        </h4>
+                                        <ul className="space-y-4">
+                                            {activeModalJob.requirements.map((req, i) => (
+                                                <li key={i} className="flex gap-4 dark:text-gray-400 text-gray-600">
+                                                    <AlertCircle size={18} className="text-orange-500 flex-shrink-0 mt-1" />
+                                                    <span className="font-medium text-sm md:text-base">{req}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </section>
+                                </div>
+
+                                {/* Sidebar Info */}
+                                <div className="space-y-6">
+                                    <div className="p-6 md:p-8 rounded-[2rem] dark:bg-white/5 bg-gray-50 border dark:border-white/5 border-black/5">
+                                        <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-6">Quick Facts</h4>
+                                        <div className="space-y-5">
+                                            <div className="flex flex-col">
+                                                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-500/60 mb-1">Location</span>
+                                                <span className="font-bold text-sm dark:text-zinc-300">{activeModalJob.location}</span>
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-500/60 mb-1">Employment Type</span>
+                                                <span className="font-bold text-sm dark:text-zinc-300">{activeModalJob.type}</span>
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-500/60 mb-1">Department</span>
+                                                <span className="font-bold text-sm dark:text-zinc-300">{activeModalJob.department}</span>
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-500/60 mb-1">Posted On</span>
+                                                <span className="font-bold text-sm dark:text-zinc-300">{activeModalJob.date}</span>
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-500/60 mb-1">Closing Date</span>
+                                                <span className="font-bold text-sm text-red-500">{activeModalJob.closingDate}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button
+                                        onClick={() => {
+                                            handleApply(activeModalJob.title);
+                                            setActiveModalJob(null);
+                                        }}
+                                        className="w-full py-5 md:py-6 rounded-[1.5rem] md:rounded-[2rem] bg-orange-gradient text-white font-black uppercase tracking-widest text-xs md:text-sm shadow-xl shadow-orange-500/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-300"
+                                    >
+                                        Apply For This Job
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
