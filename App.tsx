@@ -17,12 +17,14 @@ import ThreeBackground from "./components/ThreeBackground";
 import Projects from "./components/Projects";
 import { useTheme } from "./components/theme-provider";
 import Roadmap from "./components/RoadMap";
+import MeetTheCrew from "./components/MeetTheCrew";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const App: React.FC = () => {
   const { theme } = useTheme();
   const isProjectsPage = window.location.pathname === "/projects";
+  const isCrewPage = window.location.pathname === "/meet-the-crew";
   const mainRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
 
@@ -104,7 +106,9 @@ const App: React.FC = () => {
       <Navbar />
 
       <main className="relative z-10">
-        {isProjectsPage ? (
+        {isCrewPage ? (
+          <MeetTheCrew />
+        ) : isProjectsPage ? (
           <Projects />
         ) : (
           <>

@@ -13,6 +13,10 @@ const NAV_ITEMS = [
   { label: "Contact", id: "contact" },
 ];
 
+const PAGE_LINKS = [
+  { label: "Meet the Crew", href: "/meet-the-crew" },
+];
+
 const Navbar: React.FC = () => {
   const { theme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -70,6 +74,15 @@ const Navbar: React.FC = () => {
           >
             {item.label}
           </button>
+        ))}
+        {PAGE_LINKS.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className="hover:text-orange-500 transition-colors"
+          >
+            {link.label}
+          </a>
         ))}
       </div>
 
@@ -148,6 +161,15 @@ const Navbar: React.FC = () => {
               >
                 {item.label}
               </button>
+            ))}
+            {PAGE_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-left dark:text-zinc-300 text-zinc-700 hover:text-orange-500 transition-colors text-xs font-black uppercase tracking-[0.2em]"
+              >
+                {link.label}
+              </a>
             ))}
             <button
               type="button"

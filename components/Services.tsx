@@ -1,5 +1,6 @@
 import React from "react";
 import { Code2, Smartphone, Monitor, Settings, ArrowRight } from "lucide-react";
+import servicesMobile from "../assets/services_mobile.png";
 
 const services = [
   {
@@ -61,9 +62,9 @@ const Services: React.FC = () => {
           <div className="hidden lg:flex items-center justify-center reveal">
             <div className="relative w-80 h-[38rem] dark:bg-[#111] bg-white border-[14px] dark:border-zinc-800  border-zinc-200 rounded-[3.5rem] overflow-hidden shadow-2xl shadow-black/10">
               <img
-                src="https://picsum.photos/seed/phoneapp/600/1200"
-                className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-1000"
-                alt="mockup"
+                src={servicesMobile}
+                className="w-full h-full object-cover opacity-70 grayscale hover:grayscale-0 transition-all duration-1000"
+                alt="Software application UI mockup"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 flex items-end p-10">
                 <div>

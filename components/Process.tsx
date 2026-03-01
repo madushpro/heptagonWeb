@@ -1,5 +1,6 @@
 import React from "react";
 import { Search, PenTool, Layout } from "lucide-react";
+import processImg from "../assets/testimonial_3.png";
 
 const steps = [
   {
@@ -55,9 +56,9 @@ const Process: React.FC = () => {
           <div className="relative reveal">
             <div className="relative z-10 rounded-[2rem] md:rounded-[3rem] overflow-hidden border dark:border-white/10 border-black/5 shadow-3xl">
               <img
-                src="https://picsum.photos/seed/process/800/800"
+                src={processImg}
                 className="w-full grayscale hover:grayscale-0 transition-all duration-1000"
-                alt="process"
+                alt="Software development process and dashboard"
               />
             </div>
             {/* Decorative elements */}

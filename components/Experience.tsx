@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import expImg from "../assets/testimonial_1.png";
 
 const stats = [
   { label: "UI/UX Design", val: "96%" },
@@ -15,9 +16,9 @@ const Experience: React.FC = () => {
           <div className="relative w-full aspect-square max-w-md mx-auto">
             <div className="absolute inset-0 bg-orange-gradient rounded-full opacity-10 animate-pulse"></div>
             <img
-              src="https://picsum.photos/seed/exp/600/600"
+              src={expImg}
               className="w-full h-full object-cover rounded-full border-[10px] dark:border-white/5  border-black/5 grayscale hover:grayscale-0 transition-all duration-700"
-              alt="mobile dev"
+              alt="Software engineering team"
             />
             <div className="absolute -bottom-4 sm:-bottom-10 right-0 sm:-right-10 dark:bg-[#111] bg-white border dark:border-white/10 border-black/5 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-2xl reveal">
               <p className="text-orange-500 font-bold text-2xl sm:text-4xl mb-1">
