@@ -17,66 +17,26 @@ interface JobPost {
 
 const JOBS: JobPost[] = [
     {
-        id: "se-001",
-        title: "Senior Software Engineer",
-        department: "Software Engineering",
-        location: "Colombo / Remote",
+        id: "qa-001",
+        title: "Quality Assurance (QA) Engineer",
+        department: "Quality Assurance",
+        location: "Colombo (On-site)",
         type: "Full-time",
         date: "2024-03-01",
-        description: "We are looking for a Senior Software Engineer with a passion for building scalable, high-quality digital solutions using modern web technologies.",
+        description: "We are seeking a detail-oriented QA Engineer to join our team. You will be responsible for ensuring the quality and reliability of our enterprise software solutions, specifically focusing on .NET applications.",
         responsibilities: [
-            "Lead the design and development of complex features",
-            "Mentor junior and associate developers",
-            "Collaborate with multi-functional teams to define project requirements",
-            "Ensure the technical feasibility of UI/UX designs"
+            "Develop and execute comprehensive test plans and test cases",
+            "Identify, document, and track software defects and inconsistencies",
+            "Perform rigorous regression, functional, and performance testing",
+            "Collaborate closely with developers to resolve issues efficiently",
+            "Provide detailed feedback on UI/UX and overall system usability"
         ],
         requirements: [
-            "5+ years of experience in full-stack development",
-            "Proficiency in React, Node.js, and TypeScript",
-            "Strong understanding of system architecture and cloud services",
-            "Excellent problem-solving and communication skills"
-        ]
-    },
-    {
-        id: "ma-002",
-        title: "Mobile App Developer",
-        department: "Mobile Team",
-        location: "Colombo / Hybrid",
-        type: "Full-time",
-        date: "2024-03-01",
-        description: "Join our Mobile Team to create high-performance, beautiful mobile applications for both iOS and Android platforms.",
-        responsibilities: [
-            "Develop cross-platform mobile apps using React Native or Flutter",
-            "Optimize applications for maximum speed and scalability",
-            "Implement pixel-perfect UI designs",
-            "Integrate with backend services and APIs"
-        ],
-        requirements: [
-            "3+ years of experience in mobile development",
-            "Strong knowledge of React Native or Flutter",
-            "Experience with native mobile development is a plus",
-            "Familiarity with push notifications and mobile storage"
-        ]
-    },
-    {
-        id: "ba-003",
-        title: "Associate Business Analyst",
-        department: "Business Analysis",
-        location: "Colombo",
-        type: "Full-time",
-        date: "2024-02-15",
-        description: "We need a detail-oriented Business Analyst to bridge the gap between business needs and technical solutions.",
-        responsibilities: [
-            "Analyze business requirements and translate them into technical specs",
-            "Design and document business processes",
-            "Communicate insights and findings to stakeholders",
-            "Assist in project planning and tracking"
-        ],
-        requirements: [
-            "Degree in Business, IT, or related field",
-            "Strong analytical and critical thinking skills",
-            "Excellent documentation and presentation abilities",
-            "Basic understanding of software development lifecycles"
+            "Degree in Computer Science, IT, or a related field",
+            "Proven experience in manual and automated software testing",
+            "Solid understanding of the .NET framework and C# environment",
+            "Familiarity with QA methodologies, tools, and standard processes",
+            "Excellent analytical and attention-to-detail skills"
         ]
     }
 ];
@@ -208,7 +168,7 @@ const Careers: React.FC = () => {
                             Send Your <span className="text-orange-gradient">Application</span>
                         </h2>
                         <p className="dark:text-gray-400 text-gray-600 font-medium">
-                            Fill out the form below and our HR team (Hasitha) will get back to you soon.
+                            Fill out the form below and our HR team will get back to you soon.
                             You can also email us directly at <span className="text-orange-500">info@heptagon.lk</span>
                         </p>
                     </div>
@@ -286,8 +246,8 @@ const Careers: React.FC = () => {
                                 type="submit"
                                 disabled={formStatus !== "idle"}
                                 className={`w-full py-5 rounded-2xl flex items-center justify-center gap-3 font-black uppercase tracking-widest text-sm shadow-xl transition-all duration-300 ${formStatus === "success"
-                                        ? "bg-green-500 text-white shadow-green-500/20"
-                                        : "bg-orange-gradient text-white shadow-orange-500/30 hover:scale-[1.02] active:scale-[0.98]"
+                                    ? "bg-green-500 text-white shadow-green-500/20"
+                                    : "bg-orange-gradient text-white shadow-orange-500/30 hover:scale-[1.02] active:scale-[0.98]"
                                     }`}
                             >
                                 {formStatus === "idle" && (
