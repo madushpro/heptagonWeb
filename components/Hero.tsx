@@ -65,6 +65,7 @@ const Hero: React.FC = () => {
   return (
     <section
       ref={sectionRef}
+      id="home"
       className="relative h-screen w-full overflow-hidden bg-white dark:bg-zinc-900"
     >
       {/* REMOVED: "sticky top-0" - ScrollTrigger handles the pinning natively */}

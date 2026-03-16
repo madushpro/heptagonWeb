@@ -13,6 +13,11 @@ const NAV_ITEMS = [
   { label: "Contact", id: "contact" },
 ];
 
+const PAGE_LINKS = [
+  { label: "Meet The Crew", href: "/meet-the-crew" },
+  { label: "Careers", href: "/careers" },
+];
+
 const Navbar: React.FC = () => {
   const { theme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -28,6 +33,10 @@ const Navbar: React.FC = () => {
   };
 
   const handleNavClick = (id: string) => {
+    if (window.location.pathname !== "/") {
+      window.location.href = `/#${id}`;
+      return;
+    }
     scrollToSection(id);
     setMobileOpen(false);
     setSearchOpen(false);
@@ -60,7 +69,7 @@ const Navbar: React.FC = () => {
         )}
       </button>
 
-      <div className="hidden lg:flex items-center space-x-8 xl:space-x-10 text-xs dark:text-zinc-400 text-zinc-600 font-semibold uppercase tracking-[0.2em]">
+      <div className="hidden lg:flex items-center space-x-8 xl:space-x-10 text-xs dark:text-zinc-400 text-zinc-600 font-semibold tracking-[0.2em]">
         {NAV_ITEMS.map((item) => (
           <button
             key={item.id}
@@ -70,6 +79,15 @@ const Navbar: React.FC = () => {
           >
             {item.label}
           </button>
+        ))}
+        {PAGE_LINKS.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className="hover:text-orange-500 transition-colors"
+          >
+            {link.label}
+          </a>
         ))}
       </div>
 
@@ -115,7 +133,7 @@ const Navbar: React.FC = () => {
         <button
           type="button"
           onClick={() => handleNavClick("contact")}
-          className="hidden bg-orange-gradient hover:scale-105 transition-all text-white px-7 py-3 rounded-full lg:flex items-center space-x-2 text-xs font-black shadow-lg shadow-orange-600/30 uppercase tracking-widest"
+          className="hidden bg-orange-gradient hover:scale-105 transition-all text-white px-7 py-3 rounded-full lg:flex items-center space-x-2 text-xs font-black shadow-lg shadow-orange-600/30 tracking-widest"
         >
           <span>Initialize</span>
           <ArrowRight size={16} />
@@ -138,7 +156,7 @@ const Navbar: React.FC = () => {
           id="mobile-nav"
           className="absolute top-full left-4 right-4 mt-3 lg:hidden rounded-2xl border dark:border-white/10 border-zinc-200 dark:bg-[#0a0a0a] bg-white p-4 shadow-2xl"
         >
-          <div className="flex flex-col gap-3 text-xs font-black uppercase tracking-[0.2em]">
+          <div className="flex flex-col gap-3 text-xs font-black tracking-[0.2em]">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
@@ -149,10 +167,19 @@ const Navbar: React.FC = () => {
                 {item.label}
               </button>
             ))}
+            {PAGE_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-left dark:text-zinc-300 text-zinc-700 hover:text-orange-500 transition-colors text-xs font-black tracking-[0.2em]"
+              >
+                {link.label}
+              </a>
+            ))}
             <button
               type="button"
               onClick={() => handleNavClick("contact")}
-              className="mt-2 w-full bg-orange-gradient text-white px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest"
+              className="mt-2 w-full bg-orange-gradient text-white px-5 py-3 rounded-xl text-xs font-black tracking-widest"
             >
               Initialize
             </button>

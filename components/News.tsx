@@ -1,5 +1,7 @@
 import React from "react";
 import { MessageSquare, User, ArrowRight } from "lucide-react";
+import newsImg1 from "../assets/about_team.png";
+import newsImg2 from "../assets/about_developer.png";
 
 const articles = [
   {
@@ -9,7 +11,7 @@ const articles = [
     comments: "3 COMMENT",
     title:
       "How Our Latest Software Update The Helping Businesses Automate Faster",
-    img: "https://picsum.photos/seed/news1/800/500",
+    img: newsImg1,
   },
   {
     date: "13 MAR",
@@ -18,7 +20,7 @@ const articles = [
     comments: "3 COMMENT",
     title:
       "Updates From Our Team As We Build To Smarter Software An Shape The Future",
-    img: "https://picsum.photos/seed/news2/800/500",
+    img: newsImg2,
   },
 ];
 

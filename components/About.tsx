@@ -1,5 +1,7 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import aboutTeam from "../assets/about_team.png";
+import aboutDev from "../assets/about_developer.png";
 
 const About: React.FC = () => {
   const handleSeeOurWorksClick = () => {
@@ -68,15 +70,15 @@ const About: React.FC = () => {
         <div className="relative reveal">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <img
-              src="https://picsum.photos/seed/abt1/600/800"
+              src={aboutTeam}
               className="rounded-[2.5rem] w-full aspect-[3/4] object-cover border border-white/5 grayscale hover:grayscale-0 transition-all duration-700 dark:border-white/5  border-black/5"
-              alt="meeting"
+              alt="Software development team at work"
             />
             <div className="flex flex-col gap-6 sm:pt-12">
               <img
-                src="https://picsum.photos/seed/abt2/600/600"
+                src={aboutDev}
                 className="rounded-[2.5rem] w-full aspect-square object-cover border border-white/5 grayscale hover:grayscale-0 transition-all duration-700 dark:border-white/5  border-black/5"
-                alt="team"
+                alt="Developer coding on screen"
               />
               <div className="bg-orange-gradient p-1 rounded-[2rem]">
                 <div className="dark:bg-[#0a0a0a]  bg-white rounded-[1.8rem] p-8 h-full flex flex-col justify-center">
