@@ -2,12 +2,12 @@ import { ProjectItem } from "@/types/projectTypes";
 
 export const projects: ProjectItem[] = [
   {
-    id: "financial-dashboard-sme",
-    title: "Financial Dashboard SME",
-    cat: "Software Development",
+    id: "inventory-management-system",
+    title: "Inventory Management System",
+    cat: "Desktop App",
     year: "2025",
     featured: true,
-    img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=1000",
+    img: "../assets/p1.png",
 
     problem:
       "SMEs struggled with fragmented financial reporting across multiple spreadsheets and disconnected accounting tools.",
@@ -30,11 +30,11 @@ export const projects: ProjectItem[] = [
   },
 
   {
-    id: "e-commerce-cloud-engine",
-    title: "E-Commerce Cloud Engine",
-    cat: "Web Platform",
+    id: "report-portal",
+    title: "Report Portal",
+    cat: "Desktop App",
     year: "2024",
-    img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=1000",
+    img: "../assets/p2.png",
 
     problem:
       "Client needed a scalable e-commerce engine capable of handling seasonal traffic spikes.",
@@ -57,11 +57,11 @@ export const projects: ProjectItem[] = [
   },
 
   {
-    id: "ai-analytics-pro",
-    title: "AI Analytics Pro",
-    cat: "Mobile App",
+    id: "pos-system",
+    title: "POS System",
+    cat: "Desktop App",
     year: "2025",
-    img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=1000",
+    img: "../assets/p3.png",
 
     problem:
       "Businesses lacked predictive insights and relied only on historical reports.",

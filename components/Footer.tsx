@@ -1,6 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { Facebook, Linkedin, Mail, MapPin, Phone, ChevronRight, ArrowRight } from "lucide-react";
+import {
+  Facebook,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  ChevronRight,
+  ArrowRight,
+} from "lucide-react";
 import { useTheme } from "./theme-provider";
 import logo1 from "../assets/Logo1.png";
 import logo2 from "../assets/Logo2.png";
@@ -12,10 +20,18 @@ const WhatsAppIcon: React.FC<{ size?: number }> = ({ size = 18 }) => (
 );
 
 const socialLinks = [
-  { Icon: Facebook, href: "https://www.facebook.com/heptagon", label: "Facebook" },
+  {
+    Icon: Facebook,
+    href: "https://www.facebook.com/heptagon",
+    label: "Facebook",
+  },
   { Icon: WhatsAppIcon, href: "https://wa.me/94714144147", label: "WhatsApp" },
   { Icon: Mail, href: "mailto:contact@heptagon.lk", label: "Email" },
-  { Icon: Linkedin, href: "https://www.linkedin.com/company/heptagon-software-solutions/", label: "LinkedIn" },
+  {
+    Icon: Linkedin,
+    href: "https://www.linkedin.com/company/heptagon-software-solutions/",
+    label: "LinkedIn",
+  },
 ];
 
 const navLinks = ["Home", "About Us", "Services", "Portfolio", "Contact"];
@@ -27,7 +43,11 @@ const Footer: React.FC = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(".footer-col", {
-        y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power3.out",
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
         scrollTrigger: { trigger: footerRef.current, start: "top 90%" },
       });
     }, footerRef);
@@ -37,29 +57,39 @@ const Footer: React.FC = () => {
   return (
     <footer
       ref={footerRef}
-      className="relative pt-12 pb-6 px-4 md:px-12 dark:bg-zinc-900 bg-gray-100 border-t dark:border-white/5 overflow-hidden"
+      className="relative pt-12 px-4 md:px-12 dark:bg-zinc-900 bg-gray-100 border-t dark:border-white/5 overflow-hidden"
     >
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-64 bg-orange-900/10 blur-[100px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto">
-
         {/* Main Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-
           {/* Brand */}
           <div className="footer-col">
             <div className="mb-3">
-              {theme === "light"
-                ? <img src={logo1} alt="Heptagon" className="w-36" />
-                : <img src={logo2} alt="Heptagon" className="w-20 brightness-0 invert" />}
+              {theme === "light" ? (
+                <img src={logo1} alt="Heptagon" className="w-36" />
+              ) : (
+                <img
+                  src={logo2}
+                  alt="Heptagon"
+                  className="w-20 brightness-0 invert"
+                />
+              )}
             </div>
             <p className="dark:text-gray-400 text-gray-500 text-sm leading-relaxed mb-4">
               Leave it us we make it happen.
             </p>
             <div className="flex gap-2">
               {socialLinks.map(({ Icon, href, label }) => (
-                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="w-9 h-9 rounded-lg dark:bg-white/5 bg-black/5 border dark:border-white/10 border-black/10 flex items-center justify-center dark:text-gray-400 text-gray-600 hover:bg-orange-500 hover:text-white hover:border-transparent hover:-translate-y-0.5 transition-all duration-200">
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-9 h-9 rounded-lg dark:bg-white/5 bg-black/5 border dark:border-white/10 border-black/10 flex items-center justify-center dark:text-gray-400 text-gray-600 hover:bg-orange-500 hover:text-white hover:border-transparent hover:-translate-y-0.5 transition-all duration-200"
+                >
                   <Icon size={16} />
                 </a>
               ))}
@@ -69,14 +99,20 @@ const Footer: React.FC = () => {
           {/* Explore */}
           <div className="footer-col">
             <h4 className="dark:text-white text-gray-900 text-sm font-bold mb-4 flex items-center gap-2">
-              Explore <span className="h-0.5 w-5 bg-orange-500 rounded-full inline-block" />
+              Explore{" "}
+              <span className="h-0.5 w-5 bg-orange-500 rounded-full inline-block" />
             </h4>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link}>
-                  <a href={`#${link.toLowerCase().replace(" ", "-")}`}
-                    className="group flex items-center dark:text-gray-400 text-gray-500 hover:text-orange-500 transition-colors text-xs font-semibold uppercase tracking-wider">
-                    <ChevronRight size={12} className="mr-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-orange-500" />
+                  <a
+                    href={`#${link.toLowerCase().replace(" ", "-")}`}
+                    className="group flex items-center dark:text-gray-400 text-gray-500 hover:text-orange-500 transition-colors text-xs font-semibold uppercase tracking-wider"
+                  >
+                    <ChevronRight
+                      size={12}
+                      className="mr-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-orange-500"
+                    />
                     {link}
                   </a>
                 </li>
@@ -87,24 +123,44 @@ const Footer: React.FC = () => {
           {/* Contact */}
           <div className="footer-col">
             <h4 className="dark:text-white text-gray-900 text-sm font-bold mb-4 flex items-center gap-2">
-              Contact <span className="h-0.5 w-5 bg-orange-500 rounded-full inline-block" />
+              Contact{" "}
+              <span className="h-0.5 w-5 bg-orange-500 rounded-full inline-block" />
             </h4>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2 group">
                 <Phone size={14} className="mt-0.5 shrink-0 text-orange-500" />
                 <div>
-                  <a href="tel:+94706145157" className="block dark:text-gray-300 text-gray-700 hover:text-orange-500 transition-colors font-medium">(+94) 70 614 5157</a>
-                  <a href="tel:+94714144147" className="block dark:text-gray-300 text-gray-700 hover:text-orange-500 transition-colors font-medium">(+94) 71 414 4147</a>
+                  <a
+                    href="tel:+94706145157"
+                    className="block dark:text-gray-300 text-gray-700 hover:text-orange-500 transition-colors font-medium"
+                  >
+                    (+94) 70 614 5157
+                  </a>
+                  <a
+                    href="tel:+94714144147"
+                    className="block dark:text-gray-300 text-gray-700 hover:text-orange-500 transition-colors font-medium"
+                  >
+                    (+94) 71 414 4147
+                  </a>
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={14} className="shrink-0 text-orange-500" />
-                <a href="mailto:info@heptagon.lk" className="dark:text-gray-300 text-gray-700 hover:text-orange-500 transition-colors font-medium">info@heptagon.lk</a>
+                <a
+                  href="mailto:info@heptagon.lk"
+                  className="dark:text-gray-300 text-gray-700 hover:text-orange-500 transition-colors font-medium"
+                >
+                  info@heptagon.lk
+                </a>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin size={14} className="shrink-0 text-orange-500" />
-                <a href="https://maps.app.goo.gl/FpgRiQeXnGjLrWfz6" target="_blank" rel="noopener noreferrer"
-                  className="dark:text-gray-300 text-gray-700 hover:text-orange-500 transition-colors font-medium">
+                <a
+                  href="https://maps.app.goo.gl/FpgRiQeXnGjLrWfz6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="dark:text-gray-300 text-gray-700 hover:text-orange-500 transition-colors font-medium"
+                >
                   View on Google Maps ↗
                 </a>
               </div>
@@ -114,7 +170,8 @@ const Footer: React.FC = () => {
           {/* Map */}
           <div className="footer-col">
             <h4 className="dark:text-white text-gray-900 text-sm font-bold mb-4 flex items-center gap-2">
-              Our Location <span className="h-0.5 w-5 bg-orange-500 rounded-full inline-block" />
+              Our Location{" "}
+              <span className="h-0.5 w-5 bg-orange-500 rounded-full inline-block" />
             </h4>
             <div className="rounded-xl overflow-hidden border dark:border-white/10 border-black/10">
               <iframe
@@ -129,7 +186,6 @@ const Footer: React.FC = () => {
               />
             </div>
           </div>
-
         </div>
 
         {/* Bottom Bar */}
@@ -138,19 +194,44 @@ const Footer: React.FC = () => {
             © 2025 Heptagon. All Rights Reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="dark:text-gray-500 text-gray-400 hover:text-orange-500 text-[10px] font-bold uppercase tracking-widest transition-colors">Privacy</a>
-            <a href="#" className="dark:text-gray-500 text-gray-400 hover:text-orange-500 text-[10px] font-bold uppercase tracking-widest transition-colors">Terms</a>
-            <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="group flex items-center gap-2 dark:text-gray-400 text-gray-500 hover:text-orange-500 transition-colors">
-              <span className="text-[10px] font-bold uppercase tracking-widest">Top</span>
+            <a
+              href="#"
+              className="dark:text-gray-500 text-gray-400 hover:text-orange-500 text-[10px] font-bold uppercase tracking-widest transition-colors"
+            >
+              Privacy
+            </a>
+            <a
+              href="#"
+              className="dark:text-gray-500 text-gray-400 hover:text-orange-500 text-[10px] font-bold uppercase tracking-widest transition-colors"
+            >
+              Terms
+            </a>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="group flex items-center gap-2 dark:text-gray-400 text-gray-500 hover:text-orange-500 transition-colors"
+            >
+              <span className="text-[10px] font-bold uppercase tracking-widest">
+                Top
+              </span>
               <div className="w-7 h-7 rounded-full border dark:border-white/10 border-black/10 flex items-center justify-center group-hover:border-orange-500 transition-colors">
                 <ArrowRight size={12} className="-rotate-90" />
               </div>
             </button>
           </div>
         </div>
-
       </div>
+
+      <style>
+        
+      </style>
+
+      <div className="pt-10 dark:border-white/5 border-black/5 flex flex-col sm:flex-row items-center justify-between gap-3">
+      {/* dark:text-gray-500 text-gray-400 */}
+        <p className="w-full uppercase text-center hepta-ft-txt animate-pulse">
+          Heptagon
+        </p>
+      </div>
+
     </footer>
   );
 };
