@@ -54,9 +54,9 @@ const Navbar: React.FC = () => {
         className="flex items-center space-x-2 group cursor-pointer"
       >
         {theme === "light" ? (
-          <img src={logo1} alt="" className="w-24" />
+          <img src={logo1} alt="" className="w-32" />
         ) : (
-          <img src={logo2} alt="" className="w-24" />
+          <img src={logo2} alt="" className="w-32" />
         )}
       </button>
 
