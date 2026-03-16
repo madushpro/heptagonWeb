@@ -111,16 +111,26 @@ const Footer: React.FC = () => {
                   <Phone size={18} />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-500 uppercase mb-1">
-                    Call Us
-                  </p>
-                  <a
-                    href="tel:+11234567890"
-                    className="dark:text-white  text-gray-800 font-bold hover:text-orange-500 transition-colors"
-                  >
-                    +1 123 456 7890
-                  </a>
-                </div>
+         <p className="text-xs font-bold text-gray-500 uppercase mb-1">
+           Call Us
+           </p>
+
+          <div className="flex flex-col">
+          <a
+              href="tel:(+94) 70 614 5157"
+              className="dark:text-white text-gray-800 font-bold hover:text-orange-500 transition-colors"
+        >
+           (+94) 70 614 5157
+           </a>
+
+         <a
+          href="tel:(+94) 71 414 4147"
+          className="dark:text-white text-gray-800 font-bold hover:text-orange-500 transition-colors"
+          >
+           (+94) 71 414 4147
+    </a>
+  </div>
+</div>
               </div>
               <div className="flex items-start group">
                 <div className="w-10 h-10 rounded-full dark:bg-white/5  bg-black/5 flex items-center justify-center mr-4 group-hover:bg-orange-500 group-hover:text-white transition-colors">
@@ -131,10 +141,10 @@ const Footer: React.FC = () => {
                     Email Us
                   </p>
                   <a
-                    href="mailto:hello@heptagon.ai"
+                    href="mailto: info@heptagon.lk"
                     className="dark:text-white  text-gray-800 font-bold hover:text-orange-500 transition-colors"
                   >
-                    hello@heptagon.ai
+                     info@heptagon.lk
                   </a>
                 </div>
               </div>
@@ -147,7 +157,7 @@ const Footer: React.FC = () => {
                     Visit Us
                   </p>
                   <p className="dark:text-white  text-gray-800 font-bold">
-                    421 Allen St, San Francisco, CA
+                    34 High Level Rd, Pannipitiya 10230, Kottawa, Sri Lanka
                   </p>
                 </div>
               </div>
