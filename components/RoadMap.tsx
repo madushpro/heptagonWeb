@@ -263,13 +263,13 @@ const Roadmap: React.FC = () => {
               }}
             >
               <div className="chapter-card glass-card relative p-0.5 rounded-[2rem] group hover:scale-[1.03] transition-transform duration-500 shadow-xl w-full">
-                <div className="bg-zinc-950 dark:bg-[#080808] rounded-[1.9rem] p-6 h-full border border-white/5 relative overflow-hidden">
+                <div className="bg-white dark:bg-[#080808] rounded-[1.9rem] p-6 h-full border border-orange-500 relative overflow-hidden">
                   <div className="relative z-10 flex items-center justify-between mb-4">
                     <div className="flex flex-col">
                       <span className="text-orange-500 font-black text-[9px] uppercase tracking-[0.2em] mb-0.5">
                         {ch.chapter}
                       </span>
-                      <h3 className="text-sm font-black text-white tracking-tight uppercase">
+                      <h3 className="text-sm font-black text-zinc-900 dark:text-white tracking-tight uppercase">
                         {ch.label}
                       </h3>
                     </div>
@@ -282,7 +282,7 @@ const Roadmap: React.FC = () => {
                     <div className="text-2xl font-black text-orange-gradient mb-2">
                       {ch.year}
                     </div>
-                    <h4 className="text-xs font-bold text-white mb-2 leading-tight group-hover:text-orange-500 transition-colors">
+                    <h4 className="text-xs font-bold text-zinc-900 dark:text-white mb-2 leading-tight group-hover:text-orange-500 transition-colors">
                       {ch.title}
                     </h4>
                     <p className="text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed text-[10px]">

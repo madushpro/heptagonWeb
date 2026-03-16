@@ -125,7 +125,7 @@ const App: React.FC = () => {
             <Portfolio />
             <Experience />
             <Testimonials />
-            <News />
+            {/* <News /> */}
             <ContactCTA />
           </>
         )}
