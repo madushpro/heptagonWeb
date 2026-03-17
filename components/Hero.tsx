@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight } from "lucide-react";
 import v1 from "../assets/v1.mp4";
-import heroBg from "../assets/hero-bg.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,7 +50,7 @@ const Hero: React.FC = () => {
               scrollTrigger: {
                 trigger: sectionRef.current,
                 start: "top top",
-                end: "+=120%",
+                end: "+=50%",
                 scrub: 1.1,
                 pin: true,
                 anticipatePin: 1,
@@ -61,26 +60,22 @@ const Hero: React.FC = () => {
             });
 
             tl.to(videoWrapperRef.current, {
-              scale: 0.9,
+              scale: 0.8,
               borderRadius: 32,
               duration: 1,
             });
 
             tl.from(contentRef.current, { y: 18, duration: 0.8 }, 0);
 
-            tl.to(videoWrapperRef.current, {
-              xPercent: 18,
-              scale: 0.86,
-              duration: 1.3,
-            });
+            // tl.to(videoWrapperRef.current, {
+            //   xPercent: 18,
+            //   scale: 0.86,
+            //   duration: 1.3,
+            // });
 
-            tl.to(
-              contentRef.current,
-              { xPercent: -28, duration: 1.3 },
-              "<",
-            );
+            // tl.to(contentRef.current, { xPercent: -28, duration: 1.3 }, "<");
 
-            tl.to(videoWrapperRef.current, { yPercent: -2, duration: 0.5 });
+            // tl.to(videoWrapperRef.current, { yPercent: -2, duration: 0.5 });
 
             return () => {
               tl.scrollTrigger?.kill();
@@ -123,12 +118,12 @@ const Hero: React.FC = () => {
           ref={videoWrapperRef}
           className="absolute inset-0 overflow-hidden will-change-transform"
         >
-          <img
+          {/* <img
             src={heroBg}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 h-full w-full object-cover opacity-90 dark:opacity-75"
-          />
+          /> */}
 
           <video
             autoPlay
@@ -136,7 +131,7 @@ const Hero: React.FC = () => {
             muted
             playsInline
             preload="metadata"
-            poster={heroBg}
+            // poster={heroBg}
             className="absolute inset-0 h-full w-full object-cover opacity-70 dark:opacity-60 motion-reduce:hidden"
           >
             <source src={v1} type="video/mp4" />
