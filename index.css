@@ -190,4 +190,23 @@ body,
     animation: gradient 8s linear infinite;
     @apply bg-clip-text text-transparent bg-linear-to-r from-[#f97316] to-[#ea580c];
   }
+  .hepta-ft-txt {
+    width: 100%;
+    overflow: hidden;
+    font-size: 14.7vw;
+    line-height: 90%;
+    margin-bottom: -2%;
+    text-align: center;
+    color: var(--accent-color);
+    font-family: var(--heading-font) !important;
+    font-weight: 700 !important;
+    background: linear-gradient(0deg, #ffffff00, #62676e) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+  }
+
+  * {
+    /* border: red 1px solid; */
+  }
 }

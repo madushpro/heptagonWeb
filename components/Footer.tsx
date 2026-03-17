@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
   return (
     <footer
       ref={footerRef}
-      className="relative pt-12 pb-6 px-4 md:px-12 dark:bg-zinc-900 bg-gray-100 border-t dark:border-white/5 overflow-hidden"
+      className="relative pt-12 px-4 md:px-12 dark:bg-zinc-900 bg-gray-100 border-t dark:border-white/5 overflow-hidden"
     >
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-64 bg-orange-900/10 blur-[100px] rounded-full pointer-events-none -z-10" />
 
@@ -220,6 +220,18 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <style>
+        
+      </style>
+
+      <div className="pt-10 dark:border-white/5 border-black/5 flex flex-col sm:flex-row items-center justify-between gap-3">
+      {/* dark:text-gray-500 text-gray-400 */}
+        <p className="w-full uppercase text-center hepta-ft-txt animate-pulse">
+          Heptagon
+        </p>
+      </div>
+
     </footer>
   );
 };
