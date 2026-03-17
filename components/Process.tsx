@@ -57,7 +57,7 @@ const Process: React.FC = () => {
             <div className="relative z-10 rounded-[2rem] md:rounded-[3rem] overflow-hidden border dark:border-white/10 border-black/5 shadow-3xl">
               <img
                 src={processImg}
-                className="w-full grayscale hover:grayscale-0 transition-all duration-1000"
+                className="w-full transition-all duration-1000"
                 alt="Software development process and dashboard"
               />
             </div>
@@ -66,8 +66,7 @@ const Process: React.FC = () => {
           </div>
         </div>
 
-        {/* Scrollable tech badges */}
-        <div className="mt-24 overflow-x-auto whitespace-nowrap pb-4 scrollbar-hide">
+        {/* <div className="mt-24 overflow-x-auto whitespace-nowrap pb-4 scrollbar-hide">
           <div className="flex items-center space-x-8 animate-marquee">
             {[
               "AI-Powered Insight",
@@ -85,7 +84,7 @@ const Process: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

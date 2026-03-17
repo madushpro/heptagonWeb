@@ -56,14 +56,17 @@ const Experience: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-black bg-white dark:border-y dark:border-white/5">
+    <section
+      ref={sectionRef}
+      className="py-20 md:py-24 px-4 md:px-12 max-w-7xl mx-auto dark:bg-black bg-white dark:border-y dark:border-white/5"
+    >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
         <div className="relative reveal">
           <div className="relative w-full aspect-square max-w-md mx-auto">
-            <div className="absolute inset-0 bg-orange-gradient rounded-full opacity-10 animate-pulse"></div>
+            {/* <div className="absolute inset-0 bg-orange-gradient rounded-full opacity-10 animate-pulse"></div> */}
             <img
               src={expImg}
-              className="w-full h-full object-cover rounded-full border-[10px] dark:border-white/5  border-black/5 grayscale hover:grayscale-0 transition-all duration-700"
+              className="w-full h-full object-cover rounded-full border-[10px] dark:border-white/5  border-black/5 transition-all duration-700"
               alt="Heptagon excellence"
             />
             <div className="absolute -bottom-4 sm:-bottom-10 right-0 sm:-right-10 dark:bg-[#111] bg-white border dark:border-white/10 border-black/5 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-2xl reveal">
@@ -101,11 +104,17 @@ const Experience: React.FC = () => {
                 <div key={i} className="text-center group">
                   <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 rounded-full border-4 dark:border-orange-500/10 border-orange-500/5 flex items-center justify-center relative shadow-sm transition-all duration-500 group-hover:scale-105">
                     {/* Animated Number */}
-                    <span className="stat-number text-xl font-black dark:text-white text-gray-900" data-target={numVal}>
+                    <span
+                      className="stat-number text-xl font-black dark:text-white text-gray-900"
+                      data-target={numVal}
+                    >
                       0%
                     </span>
 
-                    <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full -rotate-90">
+                    <svg
+                      viewBox="0 0 100 100"
+                      className="absolute inset-0 w-full h-full -rotate-90"
+                    >
                       {/* Background Circle */}
                       <circle
                         cx="50"

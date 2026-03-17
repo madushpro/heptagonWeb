@@ -38,7 +38,7 @@ const About: React.FC = () => {
           <button
             type="button"
             onClick={handleSeeOurWorksClick}
-            className="bg-white/5 border border-white/10 dark:text-white  text-gray-900 hover:border-orange-500 hover:bg-orange-500 hover:text-white transition-all px-8 py-4 rounded-full flex items-center space-x-3 font-bold group"
+            className="bg-[#f97316] border border-[#f97316] text-white hover:border-[#f97316] hover:bg-[#ea580c] hover:text-white transition-all px-8 py-4 rounded-full flex items-center space-x-3 font-bold group"
           >
             <span>See Our Works</span>
             <ArrowUpRight size={20} />
@@ -71,13 +71,13 @@ const About: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <img
               src={aboutTeam}
-              className="rounded-[2.5rem] w-full aspect-[3/4] object-cover border border-white/5 grayscale hover:grayscale-0 transition-all duration-700 dark:border-white/5  border-black/5"
+              className="rounded-[2.5rem] w-full aspect-[3/4] object-cover border border-white/5 transition-all duration-700 dark:border-white/5  border-black/5"
               alt="Software development team at work"
             />
             <div className="flex flex-col gap-6 sm:pt-12">
               <img
                 src={aboutDev}
-                className="rounded-[2.5rem] w-full aspect-square object-cover border border-white/5 grayscale hover:grayscale-0 transition-all duration-700 dark:border-white/5  border-black/5"
+                className="rounded-[2.5rem] w-full aspect-square object-cover border border-white/5 transition-all duration-700 dark:border-white/5  border-black/5"
                 alt="Developer coding on screen"
               />
               <div className="bg-orange-gradient p-1 rounded-[2rem]">

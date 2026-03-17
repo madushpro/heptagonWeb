@@ -19,6 +19,7 @@ import { useTheme } from "./components/theme-provider";
 import Roadmap from "./components/RoadMap";
 import MeetTheCrew from "./components/MeetTheCrew";
 import Careers from "./components/Careers";
+import LogoLoopComponent from "./components/LogoLoopComponent";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -120,7 +121,9 @@ const App: React.FC = () => {
             <Brands />
             <About />
             <Services />
+
             <Process />
+            <LogoLoopComponent />
             <Roadmap />
             <Portfolio />
             <Experience />

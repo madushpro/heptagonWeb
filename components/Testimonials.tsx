@@ -80,7 +80,7 @@ const Testimonials: React.FC = () => {
         setAnimating(false);
       }, 350);
     },
-    [animating]
+    [animating],
   );
 
   const next = useCallback(() => {
@@ -133,10 +133,10 @@ const Testimonials: React.FC = () => {
               <img
                 key={testimonial.id}
                 src={testimonial.mainImage}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover transition-all duration-700"
                 alt={testimonial.name}
               />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-24 md:h-24 bg-orange-gradient rounded-full flex items-center justify-center text-white">
+              <div className="absolute top-1 left-0 -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-24 md:h-24 bg-orange-gradient rounded-full flex items-center justify-center text-white">
                 <Quote size={28} fill="currentColor" />
               </div>
             </div>
@@ -148,10 +148,11 @@ const Testimonials: React.FC = () => {
               <button
                 key={i}
                 onClick={() => goTo(i, i > current ? "right" : "left")}
-                className={`transition-all duration-300 rounded-full ${i === current
-                  ? "w-8 h-3 bg-orange-500"
-                  : "w-3 h-3 bg-gray-300 dark:bg-white/20 hover:bg-orange-400"
-                  }`}
+                className={`transition-all duration-300 rounded-full ${
+                  i === current
+                    ? "w-8 h-3 bg-orange-500"
+                    : "w-3 h-3 bg-gray-300 dark:bg-white/20 hover:bg-orange-400"
+                }`}
                 aria-label={`Go to testimonial ${i + 1}`}
               />
             ))}
@@ -163,7 +164,12 @@ const Testimonials: React.FC = () => {
           {/* Stars */}
           <div className="flex space-x-1 mb-8">
             {[1, 2, 3, 4, 5].map((i) => (
-              <Star key={i} size={18} fill="#FF6B00" className="text-orange-500" />
+              <Star
+                key={i}
+                size={18}
+                fill="#f97316"
+                className="text-orange-500"
+              />
             ))}
           </div>
 
@@ -188,7 +194,11 @@ const Testimonials: React.FC = () => {
               <div className="flex items-center space-x-4">
                 {/* Initials avatar — professional & authentic for real clients */}
                 <div className="w-16 h-16 rounded-full border-2 border-orange-500/40 bg-orange-gradient flex items-center justify-center text-white font-black text-xl flex-shrink-0">
-                  {testimonial.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+                  {testimonial.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .slice(0, 2)
+                    .join("")}
                 </div>
                 <div>
                   <h4 className="text-xl font-bold dark:text-white text-gray-900">
@@ -196,7 +206,9 @@ const Testimonials: React.FC = () => {
                   </h4>
                   <p className="dark:text-gray-500 text-gray-400 text-sm font-semibold">
                     {testimonial.role},{" "}
-                    <span className="text-orange-500">{testimonial.company}</span>
+                    <span className="text-orange-500">
+                      {testimonial.company}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -219,13 +231,9 @@ const Testimonials: React.FC = () => {
                 </button>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
-
-
     </section>
   );
 };

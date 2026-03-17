@@ -240,14 +240,14 @@ const Roadmap: React.FC = () => {
                 y2="100"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#FF6B00" />
-                <stop offset="1" stopColor="#FF8300" />
+                <stop stopColor="#f97316" />
+                <stop offset="1" stopColor="#ea580c" />
               </linearGradient>
             </defs>
           </svg>
           <div
             ref={glowRef}
-            className="absolute w-8 h-8 rounded-full bg-orange-500 shadow-[0_0_30px_#FF6B00] blur-sm opacity-0 z-30"
+            className="absolute w-8 h-8 rounded-full bg-orange-500 shadow-[0_0_30px_#f97316] blur-sm opacity-0 z-30"
           />
         </div>
 

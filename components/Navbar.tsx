@@ -7,14 +7,14 @@ import { useTheme } from "./theme-provider";
 
 const NAV_ITEMS = [
   { label: "Home", id: "home" },
-  { label: "About Us", id: "about-us" },
-  { label: "Our Service", id: "our-service" },
-  { label: "Our Work", id: "our-work" },
+  { label: "About", id: "about-us" },
+  { label: "Services", id: "our-service" },
+  { label: "Work", id: "our-work" },
   { label: "Contact", id: "contact" },
 ];
 
 const PAGE_LINKS = [
-  { label: "Meet The Crew", href: "/meet-the-crew" },
+  { label: "Team", href: "/meet-the-crew" },
   { label: "Careers", href: "/careers" },
 ];
 
@@ -56,20 +56,20 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 py-4 md:py-4 px-3 sm:px-4 md:px-12 flex items-center justify-between border-zinc-100 backdrop-blur-xl shadow-sm">
+    <nav className="fixed top-0 left-0 w-full z-50 py-4 md:py-6 px-3 sm:px-4 md:px-12 flex items-center justify-between border-zinc-100 backdrop-blur-xl shadow-sm">
       <button
         type="button"
         onClick={() => handleNavClick("home")}
         className="flex items-center space-x-2 group cursor-pointer"
       >
         {theme === "light" ? (
-          <img src={logo1} alt="" className="w-32" />
+          <img src={logo1} alt="" className="w-36" />
         ) : (
-          <img src={logo2} alt="" className="w-32" />
+          <img src={logo2} alt="" className="w-36" />
         )}
       </button>
 
-      <div className="hidden lg:flex items-center space-x-8 xl:space-x-10 text-xs dark:text-zinc-400 text-zinc-600 font-semibold tracking-[0.2em]">
+      <div className="hidden lg:flex items-center space-x-8 xl:space-x-10 font-bold  dark:text-zinc-400 text-zinc-600  tracking-[0.2em] ">
         {NAV_ITEMS.map((item) => (
           <button
             key={item.id}
