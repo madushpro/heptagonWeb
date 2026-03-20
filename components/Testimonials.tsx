@@ -104,10 +104,10 @@ const Testimonials: React.FC = () => {
   const testimonial = testimonials[current];
 
   return (
-    <section className="py-20 md:py-24 px-4 md:px-12 dark:bg-zinc-900 bg-gray-50 relative overflow-hidden transition-colors duration-500 dark:border-y dark:border-white/5">
+    <section className="py-20 md:py-24 px-4 md:px-12 dark:bg-zinc-900 bg-neutral-100 relative overflow-hidden transition-colors duration-500 dark:border-y dark:border-white/5">
       {/* Background glow */}
-      <div className="pointer-events-none absolute -top-32 -left-32 w-96 h-96 rounded-full bg-orange-500/10 blur-[120px]" />
-      <div className="pointer-events-none absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-orange-500/10 blur-[120px]" />
+      {/* <div className="pointer-events-none absolute -top-32 -left-32 w-96 h-96 rounded-full bg-orange-500/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-orange-500/10 blur-[120px]" /> */}
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
         {/* Left: Image + Label */}

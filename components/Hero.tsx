@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
               scrollTrigger: {
                 trigger: sectionRef.current,
                 start: "top top",
-                end: "+=50%",
+                end: "+=40%",
                 scrub: 1.1,
                 pin: true,
                 anticipatePin: 1,
@@ -66,16 +66,6 @@ const Hero: React.FC = () => {
             });
 
             tl.from(contentRef.current, { y: 18, duration: 0.8 }, 0);
-
-            // tl.to(videoWrapperRef.current, {
-            //   xPercent: 18,
-            //   scale: 0.86,
-            //   duration: 1.3,
-            // });
-
-            // tl.to(contentRef.current, { xPercent: -28, duration: 1.3 }, "<");
-
-            // tl.to(videoWrapperRef.current, { yPercent: -2, duration: 0.5 });
 
             return () => {
               tl.scrollTrigger?.kill();
@@ -118,20 +108,12 @@ const Hero: React.FC = () => {
           ref={videoWrapperRef}
           className="absolute inset-0 overflow-hidden will-change-transform"
         >
-          {/* <img
-            src={heroBg}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover opacity-90 dark:opacity-75"
-          /> */}
-
           <video
             autoPlay
             loop
             muted
             playsInline
             preload="metadata"
-            // poster={heroBg}
             className="absolute inset-0 h-full w-full object-cover opacity-70 dark:opacity-60 motion-reduce:hidden"
           >
             <source src={v1} type="video/mp4" />

@@ -221,17 +221,12 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <style>
-        
-      </style>
+      <style></style>
 
       <div className="pt-10 dark:border-white/5 border-black/5 flex flex-col sm:flex-row items-center justify-between gap-3">
-      {/* dark:text-gray-500 text-gray-400 */}
-        <p className="w-full uppercase text-center hepta-ft-txt animate-pulse">
-          Heptagon
-        </p>
+        {/* dark:text-gray-500 text-gray-400 */}
+        <p className="w-full uppercase text-center hepta-ft-txt">Heptagon</p>
       </div>
-
     </footer>
   );
 };
