@@ -57,7 +57,7 @@ const App: React.FC = () => {
         scaleX: 1,
         ease: "none",
         scrollTrigger: {
-          trigger: "body",
+          trigger: "main",
           start: "top top",
           end: "bottom bottom",
           scrub: 0.3,
@@ -67,7 +67,7 @@ const App: React.FC = () => {
       gsap.to(".bg-dimmer", {
         opacity: 0.8,
         scrollTrigger: {
-          trigger: "body",
+          trigger: "main",
           start: "top top",
           end: "bottom bottom",
           scrub: true,

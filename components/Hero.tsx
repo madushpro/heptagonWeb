@@ -14,80 +14,68 @@ const Hero: React.FC = () => {
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
 
-    const mm = gsap.matchMedia();
+    const mm = gsap.matchMedia(sectionRef);
 
-    const ctx = gsap.context(() => {
-      mm.add(
-        {
-          desktop: "(min-width: 768px)",
-          reduce: "(prefers-reduced-motion: reduce)",
-        },
-        (context) => {
-          const { desktop, reduce } = context.conditions as {
-            desktop: boolean;
-            reduce: boolean;
-          };
+    mm.add(
+      {
+        desktop: "(min-width: 768px)",
+        reduce: "(prefers-reduced-motion: reduce)",
+      },
+      (context) => {
+        const { desktop, reduce } = context.conditions as {
+          desktop: boolean;
+          reduce: boolean;
+        };
 
-          gsap.set(videoWrapperRef.current, {
-            xPercent: 0,
-            yPercent: 0,
-            scale: 1,
-            borderRadius: 0,
-            opacity: 1,
-            transformOrigin: "50% 50%",
-          });
+        if (reduce) return;
 
-          gsap.set(contentRef.current, {
-            xPercent: 0,
-            y: 0,
-            autoAlpha: 1,
-          });
-
-          if (reduce) return;
-
-          if (desktop) {
-            const tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                start: "top top",
-                end: "+=40%",
-                scrub: 1.1,
-                pin: true,
-                anticipatePin: 1,
-                invalidateOnRefresh: true,
+        if (desktop) {
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top top",
+              end: "+=150%", // Increased distance so it doesn't zip past
+              scrub: 1,
+              pin: true,
+              anticipatePin: 1,
+              snap: {
+                snapTo: 1, // Snaps to the end of the animation
+                duration: { min: 0.5, max: 1.2 },
+                delay: 0,
+                ease: "power1.inOut",
               },
-              defaults: { ease: "none" },
-            });
+            },
+          });
 
-            tl.to(videoWrapperRef.current, {
-              scale: 0.8,
-              borderRadius: 32,
-              duration: 1,
-            });
-
-            tl.from(contentRef.current, { y: 18, duration: 0.8 }, 0);
-
-            return () => {
-              tl.scrollTrigger?.kill();
-              tl.kill();
-            };
-          }
-
-          const intro = gsap.fromTo(
+          // Text disappears
+          tl.to(
             contentRef.current,
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.9, ease: "power3.out" },
+            {
+              autoAlpha: 0,
+              y: -100,
+              duration: 0.4,
+            },
+            0,
           );
 
-          return () => intro.kill();
-        },
-      );
-    }, sectionRef);
+          // Video animation (Scale down and round corners)
+          tl.to(
+            videoWrapperRef.current,
+            {
+              scale: 0.8,
+              borderRadius: 48,
+              duration: 1,
+            },
+            0,
+          );
 
-    return () => {
-      ctx.revert();
-      mm.revert();
-    };
+          // Add a small pause at the end of the timeline to "hold" the state
+          tl.to({}, { duration: 0.2 });
+        }
+      },
+    );
+
+    return () => mm.revert();
   }, []);
 
   return (
@@ -105,7 +93,7 @@ const Hero: React.FC = () => {
       <div className="relative h-[100svh] min-h-[640px] w-full pt-24">
         {/* Media */}
         <div
-          ref={videoWrapperRef}
+          // ref={videoWrapperRef}
           className="absolute inset-0 overflow-hidden will-change-transform"
         >
           <video
@@ -114,12 +102,12 @@ const Hero: React.FC = () => {
             muted
             playsInline
             preload="metadata"
-            className="absolute inset-0 h-full w-full object-cover opacity-70 dark:opacity-60 motion-reduce:hidden"
+            className="absolute inset-0 h-full w-full object-cover dark:opacity-60 motion-reduce:hidden"
           >
             <source src={v1} type="video/mp4" />
           </video>
 
-          <div className="absolute inset-0 bg-linear-to-b from-black/35 via-black/35 to-black/70 dark:from-black/55 dark:via-black/55 dark:to-black/80" />
+          {/* <div className="absolute inset-0 bg-linear-to-b from-black/35 via-black/35 to-black/70 dark:from-black/55 dark:via-black/55 dark:to-black/80" /> */}
         </div>
 
         <div
@@ -127,25 +115,28 @@ const Hero: React.FC = () => {
           className="relative z-10 mx-auto flex h-full w-full max-w-7xl items-center px-6 will-change-transform"
         >
           <div className="max-w-3xl text-center md:text-left">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-white backdrop-blur-xl">
-              <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
-              Premium software studio
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange-500 bg-white/20  px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-orange-500 backdrop-blur-xl">
+              <span className="h-1.5 w-1.5 rounded-full bg-orange-500 " />
+              heptagon
             </div>
 
             <h1 className="mt-6 text-5xl font-black tracking-tight leading-[0.95] text-white sm:text-6xl md:text-7xl">
-              Heptagon builds <span className="text-orange-500">fast</span>{" "}
-              products people love.
+              We Make <span className="text-orange-500">It</span>
+              <br />
+              Happen
             </h1>
 
-            <p className="mt-6 max-w-2xl text-base font-medium leading-relaxed text-white/80 sm:text-lg">
-              Strategy, design, and engineering—end to end. From MVPs to
+            {/* <p className="mt-6 max-w-2xl text-base font-medium leading-relaxed text-neutral-400 sm:text-lg">
+              Strategy, design, and engineering end to end. <br /> From MVPs to
               enterprise platforms, we ship with speed and craft.
-            </p>
+            </p> */}
 
             <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-start">
               <a
                 href="#contact"
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-orange-500 px-7 py-3.5 text-sm font-bold text-white shadow-xl shadow-orange-600/25 transition hover:bg-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/60 sm:w-auto"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-orange-500 px-7 py-3.5 text-sm font-bold 
+                text-white shadow-xl shadow-orange-600/25 transition hover:bg-orange-600 focus-visible:outline-none focus-visible:ring-2 
+                focus-visible:ring-orange-400/60 sm:w-auto"
               >
                 Start your project
                 <ArrowRight
@@ -156,14 +147,16 @@ const Hero: React.FC = () => {
 
               <a
                 href="#our-work"
-                className="inline-flex w-full items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-xl transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-2xl border border-orange-500 bg-white/5 px-7 py-3.5 
+                text-sm font-bold text-orange-500 backdrop-blur-xl transition-all duration-300  hover:shadow-xl hover:shadow-orange-500/25 active:scale-[0.98] 
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 sm:w-auto"
               >
                 View our work
               </a>
             </div>
 
-            <div className="mt-10 flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-white/50 md:justify-start">
-              <span className="h-px w-10 bg-white/25" />
+            <div className="mt-10 flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-neutral-400 md:justify-start">
+              <span className="h-px w-10 bg-neutral-400" />
               Scroll to explore
             </div>
           </div>
