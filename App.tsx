@@ -118,14 +118,12 @@ const App: React.FC = () => {
         ) : (
           <>
             <Hero />
-            <Brands />
             <About />
+            <Brands />
             <Roadmap />
             <Services />
-
             <Process />
             <LogoLoopComponent />
-
             <Portfolio />
             <Experience />
             <Testimonials />

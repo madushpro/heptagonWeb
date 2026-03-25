@@ -44,6 +44,7 @@ const TEAM: TeamMember[] = [
     dept: "management",
     initials: "NA",
     color: "#3b82f6",
+    image: "../assets/team/m2.jpg",
   },
   {
     name: "A.M Priyantha Adhikaru",
@@ -51,6 +52,7 @@ const TEAM: TeamMember[] = [
     dept: "management",
     initials: "AP",
     color: "#2563eb",
+    image: "../assets/team/m1.jpg",
   },
   {
     name: "Mindada Weerasiri",
@@ -58,6 +60,7 @@ const TEAM: TeamMember[] = [
     dept: ["management", "mobile"],
     initials: "MW",
     color: "#1d4ed8",
+    image: "../assets/team/m3.jpg",
   },
 
   // HR
@@ -67,6 +70,7 @@ const TEAM: TeamMember[] = [
     dept: "hr",
     initials: "HE",
     color: "#ec4899",
+    image: "https://i.pravatar.cc/300?u=HE",
   },
 
   // Business Analysis
@@ -76,6 +80,7 @@ const TEAM: TeamMember[] = [
     dept: "business",
     initials: "NH",
     color: "#10b981",
+    image: "https://i.pravatar.cc/300?u=NH",
   },
 
   // Support Team
@@ -85,6 +90,7 @@ const TEAM: TeamMember[] = [
     dept: "support",
     initials: "LB",
     color: "#f97316",
+    image: "https://i.pravatar.cc/300?u=LB",
   },
   {
     name: "H.P Thilanka",
@@ -92,6 +98,7 @@ const TEAM: TeamMember[] = [
     dept: "support",
     initials: "HT",
     color: "#ea580c",
+    image: "https://i.pravatar.cc/300?u=HT",
   },
 
   // Software Engineering & Mobile (Reordered by request)
@@ -101,6 +108,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "YW",
     color: "#f97316",
+    image: "../assets/team/yasas.jpg",
   },
   {
     name: "Avishka Ranasinha",
@@ -108,6 +116,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "AR",
     color: "#ea580c",
+    image: "../assets/team/avishka.jpg",
   },
   {
     name: "Pasindu Bhanuka",
@@ -115,6 +124,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "PB",
     color: "#fb923c",
+    image: "../assets/team/pasindu.jpg",
   },
   {
     name: "Shenan Rathnayaka",
@@ -122,6 +132,7 @@ const TEAM: TeamMember[] = [
     dept: "mobile",
     initials: "SR",
     color: "#7c3aed",
+    image: "../assets/team/shenan.jpeg",
   },
   {
     name: "Madusha Thassara",
@@ -129,6 +140,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "MT",
     color: "#f97316",
+    image: "../assets/team/madusha.png",
   },
   {
     name: "Malindu Sanchana",
@@ -136,6 +148,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "MS",
     color: "#ea580c",
+    image: "https://i.pravatar.cc/300?u=MS",
   },
   {
     name: "Minidu Tharinda",
@@ -143,19 +156,30 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "MT",
     color: "#fb923c",
+    image: "https://i.pravatar.cc/300?u=MT_Associate",
   },
 ];
 
 // ── Avatar component ───────────────────────────────────────────────────────
 const Avatar: React.FC<{ member: TeamMember }> = ({ member }) => (
-  <div
-    className="w-full aspect-square rounded-2xl flex items-center justify-center text-white font-black text-3xl select-none shadow-lg"
-    style={{
-      background: `linear-gradient(135deg, #f97316cc 0%, #ea580c44 100%)`,
-      border: `2px solid #f9731655`,
-    }}
-  >
-    {member.initials}
+  <div className="w-full aspect-square rounded-2xl flex items-center justify-center overflow-hidden bg-[#fafafa] dark:bg-zinc-800 shadow-lg border-2 border-orange-500/10 group-hover:border-orange-500/40 transition-all duration-300">
+    {member.image ? (
+      <img
+        src={member.image}
+        alt={member.name}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        loading="lazy"
+      />
+    ) : (
+      <div
+        className="w-full h-full flex items-center justify-center text-white font-black text-3xl select-none"
+        style={{
+          background: `linear-gradient(135deg, #f97316cc 0%, #ea580c44 100%)`,
+        }}
+      >
+        {member.initials}
+      </div>
+    )}
   </div>
 );
 

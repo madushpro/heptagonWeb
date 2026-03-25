@@ -33,80 +33,80 @@ const Hero: React.FC = () => {
 
         if (reduce) return;
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "+=100%", // Controlled scroll distance
-            scrub: 1,
-            pin: true,
-            anticipatePin: 1,
-          },
-        });
+        // const tl = gsap.timeline({
+        //   scrollTrigger: {
+        //     trigger: sectionRef.current,
+        //     start: "top top",
+        //     end: "+=100%", // Controlled scroll distance
+        //     scrub: 1,
+        //     pin: true,
+        //     anticipatePin: 1,
+        //   },
+        // });
 
-        // 1. Text & Content Animation (Staggered exit)
-        tl.to(
-          contentRef.current,
-          {
-            y: -100,
-            autoAlpha: 0,
-            scale: 0.95,
-            duration: 0.6,
-            ease: "power2.inOut",
-          },
-          0,
-        );
+        // // 1. Text & Content Animation (Staggered exit)
+        // tl.to(
+        //   contentRef.current,
+        //   {
+        //     y: -100,
+        //     autoAlpha: 0,
+        //     scale: 0.95,
+        //     duration: 0.6,
+        //     ease: "power2.inOut",
+        //   },
+        //   0,
+        // );
 
         // 2. Video Scaling & Radius (The core transition)
-        tl.to(
-          videoWrapperRef.current,
-          {
-            scale: desktop ? 0.9 : 0.95,
-            borderRadius: desktop ? 64 : 32,
-            duration: 1,
-            ease: "power2.inOut",
-          },
-          0,
-        );
+        // tl.to(
+        //   videoWrapperRef.current,
+        //   {
+        //     scale: desktop ? 0.9 : 0.95,
+        //     borderRadius: desktop ? 64 : 32,
+        //     duration: 1,
+        //     ease: "power2.inOut",
+        //   },
+        //   0,
+        // );
 
         // 3. Parallax Background Blurs
-        if (blurRef1.current && blurRef2.current) {
-          tl.to(
-            blurRef1.current,
-            {
-              y: 200,
-              x: 100,
-              scale: 1.2,
-              duration: 1,
-              ease: "none",
-            },
-            0,
-          ).to(
-            blurRef2.current,
-            {
-              y: -150,
-              x: -50,
-              scale: 1.1,
-              duration: 1,
-              ease: "none",
-            },
-            0,
-          );
-        }
+        // if (blurRef1.current && blurRef2.current) {
+        //   tl.to(
+        //     blurRef1.current,
+        //     {
+        //       y: 200,
+        //       x: 100,
+        //       scale: 1.2,
+        //       duration: 1,
+        //       ease: "none",
+        //     },
+        //     0,
+        //   ).to(
+        //     blurRef2.current,
+        //     {
+        //       y: -150,
+        //       x: -50,
+        //       scale: 1.1,
+        //       duration: 1,
+        //       ease: "none",
+        //     },
+        //     0,
+        //   );
+        // }
 
         // 4. Subtle video zoom (inside the wrapper)
-        const videoElement = videoWrapperRef.current?.querySelector("video");
-        if (videoElement) {
-          tl.to(
-            videoElement,
-            {
-              scale: 1.1,
-              duration: 1,
-              ease: "power1.inOut",
-            },
-            0,
-          );
-        }
+        // const videoElement = videoWrapperRef.current?.querySelector("video");
+        // if (videoElement) {
+        //   tl.to(
+        //     videoElement,
+        //     {
+        //       scale: 1.1,
+        //       duration: 1,
+        //       ease: "power1.inOut",
+        //     },
+        //     0,
+        //   );
+        // }
       },
     );
 

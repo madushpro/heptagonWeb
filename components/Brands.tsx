@@ -1,18 +1,36 @@
 import React from "react";
+import logo1 from "../assets/Frame 2.png";
+import logo2 from "../assets/Frame 3.png";
+import logo3 from "../assets/Frame 5.png";
+import logo4 from "../assets/Frame 6.png";
+import logo5 from "../assets/Frame 1.png";
 
 const Brands: React.FC = () => {
-  const brands = ["Airbnb", "Amazon", "FedEx", "Google", "Microsoft"];
+  const brands = [
+    { name: "CeylonLifecare", src: logo1 },
+    { name: "Caresoul Ceylon", src: logo2 },
+    { name: "Vitaglow", src: logo3 },
+    { name: "CFC Pharmacy", src: logo4 },
+    { name: "Chandra Furniture", src: logo5 },
+  ];
+
   return (
-    <section className="py-14 md:py-20 px-4 md:px-12 border-y dark:border-white/5 border-black/5 dark:bg-zinc-900 bg-zinc-50">
-      <div className="max-w-7xl mx-auto flex flex-wrap justify-center md:justify-between items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all">
-        {brands.map((brand) => (
-          <div
-            key={brand}
-            className="text-2xl md:text-3xl font-bold tracking-tight dark:text-white/40 text-gray-400 hover:text-orange-500 cursor-default transition-colors"
-          >
-            {brand}
-          </div>
-        ))}
+    <section className="py-14 md:py-10 px-4 md:px-12 border-y dark:border-white/5 border-black/5 dark:bg-zinc-900 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-wrap justify-center items-center gap-x-8 md:gap-x-32 gap-y-12 transition-all duration-700">
+          {brands.map((brand) => (
+            <div
+              key={brand.name}
+              className="group relative flex items-center justify-center"
+            >
+              <img
+                src={brand.src}
+                alt={brand.name}
+                className="h-12 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
