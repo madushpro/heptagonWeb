@@ -120,7 +120,7 @@ const Portfolio: React.FC = () => {
             >
               <img
                 src={p.img}
-                className="w-full h-full object-cover transition-all duration-700 grayscale group-hover:grayscale-0"
+                className="w-full h-full object-cover transition-all duration-700 "
                 alt={p.title}
               />
               <div className="absolute inset-0 bg-gradient-to-t dark:from-black dark:via-black/20 dark:to-transparent from-white via-white/20 to-transparent opacity-80" />
@@ -138,7 +138,7 @@ const Portfolio: React.FC = () => {
 
         <div
           ref={containerRef}
-          className="hidden md:flex items-center h-[70vh] w-fit px-4 md:px-12 gap-6 md:gap-12 will-change-transform"
+          className="hidden md:flex items-center h-[60vh] w-fit px-4 md:px-12 gap-6 md:gap-12 will-change-transform"
         >
           {projects.map((p, i) => (
             <a
@@ -149,7 +149,7 @@ const Portfolio: React.FC = () => {
               <div className="absolute inset-0 overflow-hidden">
                 <img
                   src={p.img}
-                  className="w-full h-full object-cover transition-all duration-1000 grayscale group-hover:grayscale-0"
+                  className="w-full h-full object-cover transition-all duration-1000"
                   alt={p.title}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t dark:from-black dark:via-black/20 dark:to-transparent  from-white  via-white/20  to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />

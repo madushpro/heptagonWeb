@@ -196,7 +196,7 @@ const Roadmap: React.FC = () => {
               The Journey
             </span>
           </div>
-          <h2 className="text-6xl md:text-8xl font-black mb-6 leading-[0.85] tracking-tighter uppercase dark:text-white text-gray-900">
+          <h2 className="text-6xl md:text-7xl font-black mb-6 leading-[0.85] tracking-tighter uppercase dark:text-white text-gray-900">
             A Legacy <br />
             <span className="text-orange-gradient">Unfolding.</span>
           </h2>

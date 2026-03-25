@@ -120,11 +120,12 @@ const App: React.FC = () => {
             <Hero />
             <Brands />
             <About />
+            <Roadmap />
             <Services />
 
             <Process />
             <LogoLoopComponent />
-            <Roadmap />
+
             <Portfolio />
             <Experience />
             <Testimonials />

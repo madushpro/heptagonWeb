@@ -10,6 +10,8 @@ const Hero: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const blurRef1 = useRef<HTMLDivElement>(null);
+  const blurRef2 = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
@@ -19,58 +21,91 @@ const Hero: React.FC = () => {
     mm.add(
       {
         desktop: "(min-width: 768px)",
+        mobile: "(max-width: 767px)",
         reduce: "(prefers-reduced-motion: reduce)",
       },
       (context) => {
-        const { desktop, reduce } = context.conditions as {
+        const { desktop, mobile, reduce } = context.conditions as {
           desktop: boolean;
+          mobile: boolean;
           reduce: boolean;
         };
 
         if (reduce) return;
 
-        if (desktop) {
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top top",
-              end: "+=150%", // Increased distance so it doesn't zip past
-              scrub: 1,
-              pin: true,
-              anticipatePin: 1,
-              snap: {
-                snapTo: 1, // Snaps to the end of the animation
-                duration: { min: 0.5, max: 1.2 },
-                delay: 0,
-                ease: "power1.inOut",
-              },
-            },
-          });
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "+=100%", // Controlled scroll distance
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+          },
+        });
 
-          // Text disappears
-          tl.to(
-            contentRef.current,
-            {
-              autoAlpha: 0,
-              y: -100,
-              duration: 0.4,
-            },
-            0,
-          );
+        // 1. Text & Content Animation (Staggered exit)
+        tl.to(
+          contentRef.current,
+          {
+            y: -100,
+            autoAlpha: 0,
+            scale: 0.95,
+            duration: 0.6,
+            ease: "power2.inOut",
+          },
+          0,
+        );
 
-          // Video animation (Scale down and round corners)
+        // 2. Video Scaling & Radius (The core transition)
+        tl.to(
+          videoWrapperRef.current,
+          {
+            scale: desktop ? 0.9 : 0.95,
+            borderRadius: desktop ? 64 : 32,
+            duration: 1,
+            ease: "power2.inOut",
+          },
+          0,
+        );
+
+        // 3. Parallax Background Blurs
+        if (blurRef1.current && blurRef2.current) {
           tl.to(
-            videoWrapperRef.current,
+            blurRef1.current,
             {
-              scale: 0.8,
-              borderRadius: 48,
+              y: 200,
+              x: 100,
+              scale: 1.2,
               duration: 1,
+              ease: "none",
+            },
+            0,
+          ).to(
+            blurRef2.current,
+            {
+              y: -150,
+              x: -50,
+              scale: 1.1,
+              duration: 1,
+              ease: "none",
             },
             0,
           );
+        }
 
-          // Add a small pause at the end of the timeline to "hold" the state
-          tl.to({}, { duration: 0.2 });
+        // 4. Subtle video zoom (inside the wrapper)
+        const videoElement = videoWrapperRef.current?.querySelector("video");
+        if (videoElement) {
+          tl.to(
+            videoElement,
+            {
+              scale: 1.1,
+              duration: 1,
+              ease: "power1.inOut",
+            },
+            0,
+          );
         }
       },
     );
@@ -86,14 +121,20 @@ const Hero: React.FC = () => {
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 left-1/4 h-96 w-96 rounded-full bg-orange-500/10 blur-[140px]" />
-        <div className="absolute -bottom-24 right-1/4 h-[520px] w-[520px] rounded-full bg-blue-500/10 blur-[160px]" />
+        <div
+          ref={blurRef1}
+          className="absolute -top-24 left-1/4 h-96 w-96 rounded-full bg-orange-500/10 blur-[140px]"
+        />
+        <div
+          ref={blurRef2}
+          className="absolute -bottom-24 right-1/4 h-[520px] w-[520px] rounded-full bg-blue-500/10 blur-[160px]"
+        />
       </div>
 
       <div className="relative h-[100svh] min-h-[640px] w-full pt-24">
         {/* Media */}
         <div
-          // ref={videoWrapperRef}
+          ref={videoWrapperRef}
           className="absolute inset-0 overflow-hidden will-change-transform"
         >
           <video
@@ -106,8 +147,6 @@ const Hero: React.FC = () => {
           >
             <source src={v1} type="video/mp4" />
           </video>
-
-          {/* <div className="absolute inset-0 bg-linear-to-b from-black/35 via-black/35 to-black/70 dark:from-black/55 dark:via-black/55 dark:to-black/80" /> */}
         </div>
 
         <div
@@ -125,11 +164,6 @@ const Hero: React.FC = () => {
               <br />
               Happen
             </h1>
-
-            {/* <p className="mt-6 max-w-2xl text-base font-medium leading-relaxed text-neutral-400 sm:text-lg">
-              Strategy, design, and engineering end to end. <br /> From MVPs to
-              enterprise platforms, we ship with speed and craft.
-            </p> */}
 
             <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-start">
               <a

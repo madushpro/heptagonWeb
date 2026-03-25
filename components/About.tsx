@@ -26,16 +26,22 @@ const About: React.FC = () => {
             <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
             Who We Are
           </div>
-          
+
           <h2 className="text-4xl md:text-6xl font-black mb-8 leading-[1.05] dark:text-white text-gray-900 tracking-tight">
             Engineering digital <br />
-            <span className="text-orange-gradient">superiority</span> with <br />
+            <span className="text-orange-gradient">superiority</span> with{" "}
+            <br />
             human precision.
           </h2>
-          
-          <p className="text-lg md:text-xl mb-12 leading-relaxed dark:text-gray-400 text-gray-600 max-w-2xl">
-            We are a multidisciplinary team of <span className="dark:text-white text-gray-900 font-bold underline decoration-orange-500/30">developers, designers & strategists</span>. We solve complex business problems through innovation, delivering smart, scalable software solutions that stand the test of time.
-          </p>
+
+          {/* <p className="text-lg md:text-xl mb-12 leading-relaxed dark:text-gray-400 text-gray-600 max-w-2xl">
+            We are a multidisciplinary team of{" "}
+            <span className="dark:text-white text-gray-900 font-bold underline decoration-orange-500/30">
+              developers, designers & strategists
+            </span>
+            . We solve complex business problems through innovation, delivering
+            smart, scalable software solutions that stand the test of time.
+          </p> */}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
             <div className="group">
@@ -43,23 +49,28 @@ const About: React.FC = () => {
                 <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
                   <Code2 size={20} />
                 </div>
-                <h3 className="font-bold text-lg dark:text-white text-gray-900 tracking-tight">Technical Excellence</h3>
+                <h3 className="font-bold text-lg dark:text-white text-gray-900 tracking-tight">
+                  Technical Excellence
+                </h3>
               </div>
-              <p className="text-sm dark:text-gray-500 text-gray-400 leading-relaxed">
+              {/* <p className="text-sm dark:text-gray-500 text-gray-400 leading-relaxed">
                 Clean code and scalable architecture are at the heart of everything we build.
-              </p>
+              </p> */}
             </div>
-            
+
             <div className="group">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
                   <Shield size={20} />
                 </div>
-                <h3 className="font-bold text-lg dark:text-white text-gray-900 tracking-tight">Reliable Strategy</h3>
+                <h3 className="font-bold text-lg dark:text-white text-gray-900 tracking-tight">
+                  Reliable Strategy
+                </h3>
               </div>
-              <p className="text-sm dark:text-gray-500 text-gray-400 leading-relaxed">
-                We align technology with your business goals to ensure long-term growth.
-              </p>
+              {/* <p className="text-sm dark:text-gray-500 text-gray-400 leading-relaxed">
+                We align technology with your business goals to ensure long-term
+                growth.
+              </p> */}
             </div>
           </div>
 
@@ -70,20 +81,31 @@ const About: React.FC = () => {
               className="bg-orange-500 text-white hover:bg-orange-600 transition-all px-8 py-4 rounded-2xl flex items-center space-x-3 font-bold group shadow-xl shadow-orange-500/20 active:scale-95"
             >
               <span>Explore Works</span>
-              <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <ArrowUpRight
+                size={20}
+                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+              />
             </button>
-            
+
             <div className="flex items-center gap-4">
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-white dark:border-black bg-gray-200 overflow-hidden">
-                    <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="team member" />
+                  <div
+                    key={i}
+                    className="w-10 h-10 rounded-full border-2 border-white dark:border-black bg-gray-200 overflow-hidden"
+                  >
+                    <img
+                      src={`https://i.pravatar.cc/100?img=${i + 10}`}
+                      alt="team member"
+                    />
                   </div>
                 ))}
               </div>
               <div className="text-xs">
                 <p className="font-bold text-orange-500">25+ Expert Talents</p>
-                <p className="dark:text-gray-500 text-gray-400">Collaborating globally</p>
+                <p className="dark:text-gray-500 text-gray-400">
+                  Collaborating globally
+                </p>
               </div>
             </div>
           </div>
@@ -124,7 +146,9 @@ const About: React.FC = () => {
                   <Rocket className="text-white" size={24} />
                 </div>
                 <div>
-                  <p className="text-3xl font-black text-orange-gradient">99%</p>
+                  <p className="text-3xl font-black text-orange-gradient">
+                    99%
+                  </p>
                 </div>
               </div>
               <p className="text-[10px] font-black uppercase tracking-widest dark:text-gray-500 text-gray-400 leading-tight">
@@ -135,7 +159,9 @@ const About: React.FC = () => {
             {/* Experience Badge */}
             <div className="absolute top-1/2 -right-6 z-30 bg-orange-500 text-white p-4 rounded-2xl shadow-xl rotate-12 flex flex-col items-center">
               <span className="text-2xl font-black leading-none">25+</span>
-              <span className="text-[8px] font-bold uppercase tracking-tighter">Years Exp</span>
+              <span className="text-[8px] font-bold uppercase tracking-tighter">
+                Years Exp
+              </span>
             </div>
           </div>
         </div>

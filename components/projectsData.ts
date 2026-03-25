@@ -83,11 +83,11 @@ export const projects: ProjectItem[] = [
   },
 
   {
-    id: "healthtech-portal",
-    title: "HealthTech Portal",
+    id: "HRIS System",
+    title: "HRIS System",
     cat: "Software System",
     year: "2024",
-    img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=1000",
+    img: "../assets/p4.png",
 
     problem:
       "Hospitals faced inefficient patient record management and appointment scheduling.",
@@ -109,56 +109,56 @@ export const projects: ProjectItem[] = [
     live: "#",
   },
 
-  {
-    id: "smart-city-logistics",
-    title: "Smart City Logistics",
-    cat: "Infrastructure",
-    year: "2023",
-    img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000",
+  // {
+  //   id: "smart-city-logistics",
+  //   title: "Smart City Logistics",
+  //   cat: "Infrastructure",
+  //   year: "2023",
+  //   img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000",
 
-    problem:
-      "Urban logistics operations lacked route optimization and real-time fleet tracking.",
+  //   problem:
+  //     "Urban logistics operations lacked route optimization and real-time fleet tracking.",
 
-    solution:
-      "Implemented IoT-based tracking system with AI-driven route optimization.",
+  //   solution:
+  //     "Implemented IoT-based tracking system with AI-driven route optimization.",
 
-    impact: "Reduced fuel costs by 28% and improved delivery time by 35%.",
+  //   impact: "Reduced fuel costs by 28% and improved delivery time by 35%.",
 
-    metrics: [
-      { value: "28%", label: "Fuel Cost Reduction" },
-      { value: "35%", label: "Delivery Speed Increase" },
-      { value: "1k+", label: "Vehicles Managed" },
-      { value: "99%", label: "Tracking Accuracy" },
-    ],
+  //   metrics: [
+  //     { value: "28%", label: "Fuel Cost Reduction" },
+  //     { value: "35%", label: "Delivery Speed Increase" },
+  //     { value: "1k+", label: "Vehicles Managed" },
+  //     { value: "99%", label: "Tracking Accuracy" },
+  //   ],
 
-    stack: ["React", "Node.js", "IoT", "AWS"],
-    live: "#",
-  },
+  //   stack: ["React", "Node.js", "IoT", "AWS"],
+  //   live: "#",
+  // },
 
-  {
-    id: "cybersec-guardian",
-    title: "CyberSec Guardian",
-    cat: "Security",
-    year: "2024",
-    img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000",
+  // {
+  //   id: "cybersec-guardian",
+  //   title: "CyberSec Guardian",
+  //   cat: "Security",
+  //   year: "2024",
+  //   img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000",
 
-    problem:
-      "Organizations faced increasing cyber threats and lacked proactive monitoring systems.",
+  //   problem:
+  //     "Organizations faced increasing cyber threats and lacked proactive monitoring systems.",
 
-    solution:
-      "Developed real-time threat detection platform with anomaly detection algorithms and automated alerts.",
+  //   solution:
+  //     "Developed real-time threat detection platform with anomaly detection algorithms and automated alerts.",
 
-    impact:
-      "Prevented critical security breaches and reduced incident response time by 60%.",
+  //   impact:
+  //     "Prevented critical security breaches and reduced incident response time by 60%.",
 
-    metrics: [
-      { value: "60%", label: "Faster Response" },
-      { value: "24/7", label: "Monitoring" },
-      { value: "100%", label: "Threat Detection Coverage" },
-      { value: "0", label: "Critical Breaches" },
-    ],
+  //   metrics: [
+  //     { value: "60%", label: "Faster Response" },
+  //     { value: "24/7", label: "Monitoring" },
+  //     { value: "100%", label: "Threat Detection Coverage" },
+  //     { value: "0", label: "Critical Breaches" },
+  //   ],
 
-    stack: ["React", "Python", "AI Models", "Cloud Security"],
-    live: "#",
-  },
+  //   stack: ["React", "Python", "AI Models", "Cloud Security"],
+  //   live: "#",
+  // },
 ];
