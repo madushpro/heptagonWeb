@@ -132,9 +132,11 @@ body,
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
@@ -145,30 +147,36 @@ body,
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
   }
 
   @keyframes float {
+
     0%,
     100% {
       transform: translateY(0);
     }
+
     50% {
       transform: translateY(-10px);
     }
   }
 
   @keyframes bounce-slow {
+
     0%,
     100% {
       transform: translateY(-5%);
       animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
     }
+
     50% {
       transform: translateY(0);
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
@@ -193,6 +201,7 @@ body,
     animation: gradient 8s linear infinite;
     @apply bg-clip-text text-transparent bg-linear-to-r from-[#f97316] to-[#ea580c];
   }
+
   .hepta-ft-txt {
     width: 100%;
     overflow: hidden;
