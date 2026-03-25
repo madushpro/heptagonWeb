@@ -223,6 +223,7 @@ const App: React.FC<AppProps> = ({ autoTour = false, onTourEnd }) => {
         tourTween.current = gsap.to(window, {
           scrollTo: { y: scrollMax, autoKill: false },
           duration: scrollDuration,
+          delay: 6, // ── Requirement: wait 6 seconds on Hero before scrolling ──
           ease: "none",
           onUpdate: () => {
             if (window.location.pathname !== "/") return;
