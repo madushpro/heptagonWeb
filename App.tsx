@@ -192,7 +192,7 @@ const App: React.FC<AppProps> = ({ autoTour = false, onTourEnd }) => {
         ScrollTrigger.refresh();
 
         const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollDuration = Math.max(45, scrollMax / 125);
+        const scrollDuration = Math.max(25, scrollMax / 175);
 
         const initiateSubPageTour = (path: string, label: string, step: number, isLast: boolean) => {
           navigateTo(path);
@@ -204,7 +204,7 @@ const App: React.FC<AppProps> = ({ autoTour = false, onTourEnd }) => {
             const subScrollMax = document.documentElement.scrollHeight - window.innerHeight;
             tourTween.current = gsap.to(window, {
               scrollTo: { y: subScrollMax, autoKill: false },
-              duration: Math.max(12, subScrollMax / 200),
+              duration: Math.max(8, subScrollMax / 250),
               ease: "none",
               onComplete: () => {
                 tourSequenceId.current = window.setTimeout(() => {
