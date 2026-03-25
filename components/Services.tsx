@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Code2, Smartphone, Monitor, Settings, ArrowRight } from "lucide-react";
-import servicesMobile from "../assets/services_mobile.png";
-import LogoLoopComponent from "./LogoLoopComponent";
+import servicesMobile from "../assets/Services_mobile_2.png";
 
 const services = [
   {
@@ -103,9 +102,9 @@ const Services: React.FC = () => {
               <div className="absolute -top-6 -right-6 w-20 h-20 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 flex items-center justify-center shadow-xl animate-bounce-slow max-md:hidden">
                 <Code2 className="text-orange-500" size={24} />
               </div>
-              <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 flex items-center justify-center shadow-xl animate-float max-md:hidden">
+              {/* <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 flex items-center justify-center shadow-xl animate-float max-md:hidden">
                 <Smartphone className="text-blue-500" size={20} />
-              </div>
+              </div> */}
             </div>
           </div>
 

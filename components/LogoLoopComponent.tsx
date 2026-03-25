@@ -159,7 +159,7 @@ const LogoLoopComponent = () => {
             hoverSpeed={5}
             scaleOnHover
             ariaLabel="Technology partners"
-            className="opacity-40 hover:opacity-100 transition-opacity duration-1000"
+            className=" transition-opacity duration-1000"
           />
         </div>
       </div>

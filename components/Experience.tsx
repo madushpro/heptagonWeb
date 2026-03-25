@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import expImg from "../assets/testimonial_1.png";
+import expImg from "../assets/experienceImg.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
