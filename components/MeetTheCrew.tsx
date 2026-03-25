@@ -237,10 +237,10 @@ const MeetTheCrew: React.FC = () => {
     activeTab === "all"
       ? TEAM
       : TEAM.filter((m) =>
-          Array.isArray(m.dept)
-            ? m.dept.includes(activeTab)
-            : m.dept === activeTab,
-        );
+        Array.isArray(m.dept)
+          ? m.dept.includes(activeTab)
+          : m.dept === activeTab,
+      );
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -320,11 +320,10 @@ const MeetTheCrew: React.FC = () => {
                 <button
                   key={id}
                   onClick={() => setActiveTab(id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 border ${
-                    active
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 border ${active
                       ? "bg-orange-500 text-white border-orange-500 shadow-lg shadow-orange-500/20"
                       : "dark:bg-white/5 bg-white dark:border-white/10 border-black/10 dark:text-gray-400 text-gray-600 hover:border-orange-500 hover:text-orange-500"
-                  }`}
+                    }`}
                 >
                   <Icon size={13} />
                   {label}

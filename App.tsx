@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import Lenis from "lenis";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Brands from "./components/Brands";
@@ -146,6 +147,37 @@ const App: React.FC<AppProps> = ({ autoTour = false, onTourEnd }) => {
   const [tourStep, setTourStep] = useState(1);
   const tourTween = useRef<gsap.core.Tween | null>(null);
   const tourSequenceId = useRef<number | null>(null);
+  const lenisRef = useRef<Lenis | null>(null);
+
+  // Initialize Lenis Smooth Scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    lenisRef.current = lenis;
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      lenis.destroy();
+      gsap.ticker.remove((time) => {
+        lenis.raf(time * 1000);
+      });
+    };
+  }, []);
 
   const endTour = () => {
     if (tourTween.current) tourTween.current.kill();
@@ -303,7 +335,7 @@ const App: React.FC<AppProps> = ({ autoTour = false, onTourEnd }) => {
           trigger: "main",
           start: "top top",
           end: "bottom bottom",
-          scrub: 0.1,
+          scrub: 1.5,
         },
       });
 
@@ -313,7 +345,7 @@ const App: React.FC<AppProps> = ({ autoTour = false, onTourEnd }) => {
           trigger: "main",
           start: "top top",
           end: "bottom bottom",
-          scrub: true,
+          scrub: 1.5,
         },
       });
     }, mainRef);

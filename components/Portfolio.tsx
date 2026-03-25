@@ -46,7 +46,7 @@ const Portfolio: React.FC = () => {
                 containerAnimation: tween,
                 start: "left right",
                 end: "right left",
-                scrub: true,
+                scrub: 1,
               },
             },
           );
