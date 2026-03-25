@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
       </div>
 
       <div className="flex items-center space-x-4 relative">
-        <ModeToggle />
+        {/* <ModeToggle /> */}
 
         {/* <div className="relative hidden sm:block">
           <button

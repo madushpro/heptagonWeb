@@ -140,7 +140,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "MT",
     color: "#f97316",
-    image: "../assets/team/madusha.png",
+    image: "../assets/team/madusha.jpeg",
   },
   {
     name: "Malindu Sanchana",
