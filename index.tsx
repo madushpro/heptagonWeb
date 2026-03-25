@@ -37,13 +37,5 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <RootComponent />
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="light"
-      enableSystem={false}
-      disableTransitionOnChange
-    >
-      <App />
-    </ThemeProvider>
   </React.StrictMode>,
 );

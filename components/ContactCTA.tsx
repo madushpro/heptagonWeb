@@ -120,9 +120,9 @@ const ContactCTA: React.FC = () => {
             Global HQ
           </p>
           <p className="dark:text-white  text-gray-700 text-xs font-semibold">
-            421 Allen St, Suite 400
+            34 High Level Rd,<br /> Pannipitiya 10230,
             <br />
-            San Francisco, CA
+            Kottawa, Sri Lanka
           </p>
         </div>
 
@@ -131,9 +131,9 @@ const ContactCTA: React.FC = () => {
             Contact
           </p>
           <p className="dark:text-white  text-gray-700 text-xs font-semibold">
-            hello@heptagon.ai
+            info@heptagon.lk
             <br />
-            +1 123 456 7890
+            +94 71 414 4147
           </p>
         </div>
       </div>

@@ -185,10 +185,14 @@ const App: React.FC<AppProps> = ({ autoTour = false, onTourEnd }) => {
       setTourActive(true);
 
       // Phase 1: Home Page Continuous Scroll
-      if (!isCrewPage && !isCareersPage && !isProjectsPage) {
+      if (window.location.pathname === "/") {
         window.scrollTo(0, 0);
+
+        // Final measure after layout is theoretically settled
+        ScrollTrigger.refresh();
+
         const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollDuration = Math.max(45, scrollMax / 150);
+        const scrollDuration = Math.max(45, scrollMax / 125);
 
         const initiateSubPageTour = (path: string, label: string, step: number, isLast: boolean) => {
           navigateTo(path);
