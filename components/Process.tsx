@@ -1,6 +1,6 @@
 import React from "react";
 import { Search, PenTool, Layout } from "lucide-react";
-import processImg from "../assets/testimonial_3.png";
+import processImg from "../assets/img1.png";
 
 const steps = [
   {

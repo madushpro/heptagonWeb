@@ -168,8 +168,8 @@ const Hero: React.FC = () => {
             <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-start">
               <a
                 href="#contact"
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-orange-500 px-7 py-3.5 text-sm font-bold 
-                text-white shadow-xl shadow-orange-600/25 transition hover:bg-orange-600 focus-visible:outline-none focus-visible:ring-2 
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-orange-500 px-7 py-3.5 text-sm font-bold
+                text-white shadow-xl shadow-orange-600/25 transition hover:bg-orange-600 focus-visible:outline-none focus-visible:ring-2
                 focus-visible:ring-orange-400/60 sm:w-auto"
               >
                 Start your project
@@ -181,8 +181,8 @@ const Hero: React.FC = () => {
 
               <a
                 href="#our-work"
-                className="inline-flex w-full items-center justify-center rounded-2xl border border-orange-500 bg-white/5 px-7 py-3.5 
-                text-sm font-bold text-orange-500 backdrop-blur-xl transition-all duration-300  hover:shadow-xl hover:shadow-orange-500/25 active:scale-[0.98] 
+                className="inline-flex w-full items-center justify-center rounded-2xl border border-orange-500 bg-white/5 px-7 py-3.5
+                text-sm font-bold text-orange-500 backdrop-blur-xl transition-all duration-300  hover:shadow-xl hover:shadow-orange-500/25 active:scale-[0.98]
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 sm:w-auto"
               >
                 View our work
