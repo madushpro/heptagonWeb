@@ -70,7 +70,7 @@ const TEAM: TeamMember[] = [
     dept: "hr",
     initials: "HE",
     color: "#ec4899",
-    image: "https://i.pravatar.cc/300?u=HE",
+    image: "../assets/team/hasitha.jpg",
   },
 
   // Business Analysis
@@ -80,7 +80,7 @@ const TEAM: TeamMember[] = [
     dept: "business",
     initials: "NH",
     color: "#10b981",
-    image: "https://i.pravatar.cc/300?u=NH",
+    image: "../assets/team/nirul.jpg",
   },
 
   // Support Team
@@ -90,7 +90,7 @@ const TEAM: TeamMember[] = [
     dept: "support",
     initials: "LB",
     color: "#f97316",
-    image: "https://i.pravatar.cc/300?u=LB",
+    image: "../assets/team/lakshan.jpeg",
   },
   {
     name: "H.P Thilanka",
@@ -98,7 +98,7 @@ const TEAM: TeamMember[] = [
     dept: "support",
     initials: "HT",
     color: "#ea580c",
-    image: "https://i.pravatar.cc/300?u=HT",
+    image: "../assets/team/thilanka.jpg",
   },
 
   // Software Engineering & Mobile (Reordered by request)
@@ -148,7 +148,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "MS",
     color: "#ea580c",
-    image: "https://i.pravatar.cc/300?u=MS",
+    image: "../assets/team/malindu.jpeg",
   },
   {
     name: "Minidu Tharinda",
@@ -156,13 +156,18 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "MT",
     color: "#fb923c",
-    image: "https://i.pravatar.cc/300?u=MT_Associate",
+    image: "../assets/team/minidu.jpg",
   },
 ];
 
 // ── Avatar component ───────────────────────────────────────────────────────
-const Avatar: React.FC<{ member: TeamMember }> = ({ member }) => (
-  <div className="w-full aspect-square rounded-2xl flex items-center justify-center overflow-hidden bg-[#fafafa] dark:bg-zinc-800 shadow-lg border-2 border-orange-500/10 group-hover:border-orange-500/40 transition-all duration-300">
+const Avatar: React.FC<{ member: TeamMember; large?: boolean }> = ({
+  member,
+  large,
+}) => (
+  <div
+    className={`w-full aspect-square rounded-2xl flex items-center justify-center overflow-hidden bg-[#fafafa] dark:bg-zinc-800 shadow-lg border-2 border-orange-500/10 group-hover:border-orange-500/40 transition-all duration-300 ${large ? "sm:rounded-3xl" : ""}`}
+  >
     {member.image ? (
       <img
         src={member.image}
@@ -188,29 +193,34 @@ const MemberCard: React.FC<{
   member: TeamMember;
   index: number;
   activeTab: string;
-}> = ({ member, index, activeTab }) => {
+  large?: boolean;
+}> = ({ member, index, activeTab, large }) => {
   const displayRole =
     member.name === "Mindada Weerasiri" && activeTab === "mobile"
       ? "Head of Mobile"
       : member.role;
 
   return (
-    <div className="crew-card h-full dark:bg-zinc-900/80 bg-white rounded-2xl overflow-hidden border dark:border-white/5 border-black/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center p-5 sm:p-6">
+    <div
+      className={`crew-card group h-full dark:bg-zinc-900/80 bg-white rounded-2xl overflow-hidden border dark:border-white/5 border-black/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center ${large ? "p-6 sm:p-8" : "p-5 sm:p-6"}`}
+    >
       {/* Avatar */}
-      <div className="mb-4 w-full">
-        <Avatar member={member} />
+      <div className={`mb-4 w-full ${large ? "max-w-[200px]" : ""}`}>
+        <Avatar member={member} large={large} />
       </div>
 
       {/* Name – orange */}
       <h3
-        className="font-bold text-sm leading-tight mb-1"
+        className={`font-bold leading-tight mb-1 ${large ? "text-lg sm:text-xl" : "text-sm"}`}
         style={{ color: "#f97316" }}
       >
         {member.name}
       </h3>
 
       {/* Designation – dark */}
-      <p className="text-xs font-semibold dark:text-gray-300 text-gray-700 leading-snug">
+      <p
+        className={`font-semibold dark:text-gray-300 text-gray-700 leading-snug ${large ? "text-sm sm:text-base" : "text-xs"}`}
+      >
         {displayRole}
       </p>
     </div>
@@ -328,12 +338,44 @@ const MeetTheCrew: React.FC = () => {
       {/* ── Cards Grid ── */}
       <div className="px-4 md:px-12 pb-20">
         <div className="max-w-7xl mx-auto">
+          {/* Bosses Row (First 3) - Only show exclusively at the top if in 'all' or 'management' */}
+          {activeTab === "all" && (
+            <div className="flex flex-wrap justify-center items-stretch gap-6 mb-12 border-b dark:border-white/5 border-black/5 pb-12">
+              {TEAM.slice(0, 3).map((member, i) => (
+                <div key={`${member.name}-${i}`} className="w-56 sm:w-64">
+                  <MemberCard
+                    member={member}
+                    index={i}
+                    activeTab={activeTab}
+                    large
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Rest of the Crew */}
           <div className="flex flex-wrap justify-center items-stretch gap-4 sm:gap-6">
-            {filtered.map((member, i) => (
-              <div key={`${member.name}-${i}`} className="w-40 sm:w-48">
-                <MemberCard member={member} index={i} activeTab={activeTab} />
-              </div>
-            ))}
+            {(activeTab === "all" ? filtered.slice(3) : filtered).map(
+              (member, i) => {
+                const isBoss = TEAM.slice(0, 3).some(
+                  (b) => b.name === member.name,
+                );
+                return (
+                  <div
+                    key={`${member.name}-${i}`}
+                    className={isBoss ? "w-56 sm:w-64" : "w-40 sm:w-48"}
+                  >
+                    <MemberCard
+                      member={member}
+                      index={i}
+                      activeTab={activeTab}
+                      large={isBoss}
+                    />
+                  </div>
+                );
+              },
+            )}
           </div>
         </div>
       </div>

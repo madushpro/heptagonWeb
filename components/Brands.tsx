@@ -3,7 +3,7 @@ import logo1 from "../assets/Frame 2.png";
 import logo2 from "../assets/Frame 3.png";
 import logo3 from "../assets/Frame 5.png";
 import logo4 from "../assets/Frame 6.png";
-import logo5 from "../assets/Frame 1.png";
+import logo5 from "../assets/Frame 1.jpg";
 
 const Brands: React.FC = () => {
   const brands = [
@@ -17,7 +17,7 @@ const Brands: React.FC = () => {
   return (
     <section className="py-14 md:py-10 px-4 md:px-12 border-y dark:border-white/5 border-black/5 dark:bg-zinc-900 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-wrap justify-center items-center gap-x-8 md:gap-x-32 gap-y-12 transition-all duration-700">
+        <div className="flex flex-wrap justify-center items-center gap-x-16 md:gap-x-20 gap-y-12 transition-all duration-700">
           {brands.map((brand) => (
             <div
               key={brand.name}
@@ -26,7 +26,7 @@ const Brands: React.FC = () => {
               <img
                 src={brand.src}
                 alt={brand.name}
-                className="h-12 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                className="h-12 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
               />
             </div>
           ))}
