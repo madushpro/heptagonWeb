@@ -104,7 +104,7 @@ const Testimonials: React.FC = () => {
   const testimonial = testimonials[current];
 
   return (
-    <section className="py-20 md:py-24 px-4 md:px-12 dark:bg-zinc-900 bg-neutral-100 relative overflow-hidden transition-colors duration-500 dark:border-y dark:border-white/5">
+    <section id="testimonials" className="py-20 md:py-24 px-4 md:px-12 dark:bg-zinc-900 bg-neutral-100 relative overflow-hidden transition-colors duration-500 dark:border-y dark:border-white/5">
       {/* Background glow */}
       {/* <div className="pointer-events-none absolute -top-32 -left-32 w-96 h-96 rounded-full bg-orange-500/10 blur-[120px]" />
       <div className="pointer-events-none absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-orange-500/10 blur-[120px]" /> */}
@@ -148,11 +148,10 @@ const Testimonials: React.FC = () => {
               <button
                 key={i}
                 onClick={() => goTo(i, i > current ? "right" : "left")}
-                className={`transition-all duration-300 rounded-full ${
-                  i === current
+                className={`transition-all duration-300 rounded-full ${i === current
                     ? "w-8 h-3 bg-orange-500"
                     : "w-3 h-3 bg-gray-300 dark:bg-white/20 hover:bg-orange-400"
-                }`}
+                  }`}
                 aria-label={`Go to testimonial ${i + 1}`}
               />
             ))}

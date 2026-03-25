@@ -96,7 +96,7 @@ const Launcher: React.FC<{ onLaunchComplete: () => void }> = ({ onLaunchComplete
     const [popKey, setPopKey] = useState(0);
 
     const startLaunch = () => {
-        setCountdown(5);
+        setCountdown(3);
         setPopKey((k) => k + 1);
     };
 

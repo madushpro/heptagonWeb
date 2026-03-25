@@ -22,7 +22,7 @@ const steps = [
 
 const Process: React.FC = () => {
   return (
-    <section className="py-20 md:py-24 px-4 md:px-12  mx-auto overflow-hidden dark:bg-[#07090d] bg-white dark:border-y dark:border-white/5">
+    <section id="process" className="py-20 md:py-24 px-4 md:px-12  mx-auto overflow-hidden dark:bg-[#07090d] bg-white dark:border-y dark:border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center ">
           <div className="reveal">

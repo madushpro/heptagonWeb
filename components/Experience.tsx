@@ -57,6 +57,7 @@ const Experience: React.FC = () => {
 
   return (
     <section
+      id="experience"
       ref={sectionRef}
       className="py-20 md:py-24 px-4 md:px-12 dark:bg-black bg-white dark:border-y dark:border-white/5"
     >

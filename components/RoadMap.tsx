@@ -177,6 +177,7 @@ const Roadmap: React.FC = () => {
 
   return (
     <section
+      id="roadmap"
       ref={containerRef}
       className="relative min-h-screen overflow-hidden bg-transparent z-10"
     >

@@ -9,9 +9,11 @@ const RootComponent = () => {
   const [isLaunched, setIsLaunched] = React.useState(() => {
     return sessionStorage.getItem("hasLaunched") === "true";
   });
+  const [autoTour, setAutoTour] = React.useState(false);
 
   const handleLaunchComplete = () => {
     sessionStorage.setItem("hasLaunched", "true");
+    setAutoTour(true);
     setIsLaunched(true);
   };
 
@@ -21,7 +23,7 @@ const RootComponent = () => {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
-      <App />
+      <App autoTour={autoTour} onTourEnd={() => setAutoTour(false)} />
     </ThemeProvider>
   );
 };
