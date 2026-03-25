@@ -151,32 +151,33 @@ const Hero: React.FC = () => {
 
         <div
           ref={contentRef}
-          className="relative z-10 mx-auto flex h-full w-full max-w-7xl items-center px-6 will-change-transform"
+          className="relative z-10 mx-auto flex h-full w-full max-w-7xl px-6 will-change-transform py-28"
         >
-          <div className="max-w-3xl text-center md:text-left">
-            <div className="inline-flex items-center gap-2 rounded-full border border-orange-500 bg-white/20  px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-orange-500 backdrop-blur-xl">
-              <span className="h-1.5 w-1.5 rounded-full bg-orange-500 " />
+          <div className="max-w-4xl text-center md:text-left">
+            {/* <div className="inline-flex items-center gap-2 rounded-full border border-orange-500 bg-white/5  px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.22em] text-orange-500 backdrop-blur-xl">
+              <span className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse" />
               heptagon
-            </div>
+            </div> */}
 
-            <h1 className="mt-6 text-5xl font-black tracking-tight leading-[0.95] text-white sm:text-6xl md:text-7xl">
-              We Make <span className="text-orange-500">It</span>
-              <br />
-              Happen
+            <h1 className="flex flex-col gap-4 mt-8 text-7xl font-bold tracking-tighter leading-[0.85] text-black sm:text-7xl md:text-8xl">
+              heptagon
+
+              <span className="text-2xl sm:text-3xl md:text-4xl tracking-widest text-zinc-500  font-bold">
+                We Make <span className="text-orange-500">It</span> Happen
+              </span>
             </h1>
 
-            <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-start">
+            <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:justify-start">
               <a
                 href="#contact"
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-orange-500 px-7 py-3.5 text-sm font-bold
-                text-white shadow-xl shadow-orange-600/25 transition hover:bg-orange-600 focus-visible:outline-none focus-visible:ring-2
-                focus-visible:ring-orange-400/60 sm:w-auto"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-orange-500 px-8 py-4 text-sm font-black uppercase tracking-widest text-white shadow-xl shadow-orange-600/25 transition hover:bg-orange-600 active:scale-95 sm:w-auto"
               >
-                Start your project
+                <span>Start project</span>
                 <ArrowRight
                   size={18}
-                  className="transition-transform group-hover:translate-x-0.5"
+                  className="transition-transform group-hover:translate-x-1"
                 />
+
               </a>
 
               <a
@@ -189,8 +190,8 @@ const Hero: React.FC = () => {
               </a>
             </div>
 
-            <div className="mt-10 flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-neutral-400 md:justify-start">
-              <span className="h-px w-10 bg-neutral-400" />
+            <div className="mt-16 flex items-center justify-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-orange-500 md:justify-start">
+              <span className="h-px w-10 bg-orange-500" />
               Scroll to explore
             </div>
           </div>

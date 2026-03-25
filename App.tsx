@@ -375,8 +375,8 @@ const App: React.FC<AppProps> = ({ autoTour = false, onTourEnd }) => {
           ) : (
             <>
               <Hero />
-              <Brands />
               <About />
+              <Brands />
               <Roadmap />
               <Services />
               <Process />

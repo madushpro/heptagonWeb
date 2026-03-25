@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import logo2 from "../assets/Logo2.png";
 
 /* ─── Animated starfield canvas ─── */
 const StarCanvas: React.FC = () => {
@@ -94,6 +95,7 @@ const StarCanvas: React.FC = () => {
 const Launcher: React.FC<{ onLaunchComplete: () => void }> = ({ onLaunchComplete }) => {
     const [countdown, setCountdown] = useState<number | null>(null);
     const [popKey, setPopKey] = useState(0);
+    const [showLogo, setShowLogo] = useState(false);
 
     const startLaunch = () => {
         setCountdown(3);
@@ -108,8 +110,12 @@ const Launcher: React.FC<{ onLaunchComplete: () => void }> = ({ onLaunchComplete
             const t = setTimeout(() => setCountdown((c) => (c ?? 1) - 1), 1000);
             return () => clearTimeout(t);
         } else {
-            // Countdown done — go directly to home page, no animation
-            onLaunchComplete();
+            // Countdown hit 0 → Show Logo Animation
+            setShowLogo(true);
+            const logoTimer = setTimeout(() => {
+                onLaunchComplete();
+            }, 5000); // ── Requirement: logo show for 5 seconds ──
+            return () => clearTimeout(logoTimer);
         }
     }, [countdown, onLaunchComplete]);
 
@@ -145,6 +151,45 @@ const Launcher: React.FC<{ onLaunchComplete: () => void }> = ({ onLaunchComplete
           animation: cd-pop 0.55s cubic-bezier(0.22,1,0.36,1) forwards,
                      cd-glow-pulse 1s ease-in-out infinite;
         }
+
+        /* ─── Logo Entry Animation ─── */
+        @keyframes logo-reveal {
+          0% { 
+            transform: scale(0.5) rotate(-10deg); 
+            opacity: 0; 
+            filter: blur(20px) brightness(2);
+          }
+          20% { 
+            transform: scale(1.1) rotate(0deg); 
+            opacity: 1; 
+            filter: blur(0px) brightness(1.5);
+          }
+          85% {
+            transform: scale(1.05);
+            opacity: 1;
+            filter: brightness(1) blur(0);
+          }
+          100% { 
+            transform: scale(1.3); 
+            opacity: 0;
+            filter: blur(20px) brightness(2);
+          }
+        }
+        .logo-anim-container {
+          animation: logo-reveal 5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+        .logo-glow {
+          filter: drop-shadow(0 0 30px rgba(249,115,22,0.4));
+        }
+
+        /* ─── Circular Wipe Background ─── */
+        @keyframes wipe-in {
+            0% { clip-path: circle(0% at center); }
+            100% { clip-path: circle(150% at center); }
+        }
+        .wipe-overlay {
+            animation: wipe-in 1s ease-out forwards;
+        }
       `}</style>
 
             <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#050505] text-white overflow-hidden">
@@ -162,10 +207,18 @@ const Launcher: React.FC<{ onLaunchComplete: () => void }> = ({ onLaunchComplete
                     <button
                         id="launch-btn"
                         onClick={startLaunch}
-                        className="relative z-10 cursor-pointer rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-20 py-9 text-4xl md:text-6xl font-black uppercase tracking-[0.25em] text-white select-none hover:scale-110 active:scale-95 transition-transform duration-200 launcher-btn-blink"
+                        className="relative z-10 cursor-pointer rounded-full bg-linear-to-r from-orange-500 to-orange-600 px-20 py-9 text-4xl md:text-6xl font-black uppercase tracking-[0.25em] text-white select-none hover:scale-110 active:scale-95 transition-transform duration-200 launcher-btn-blink"
                     >
                         Launch
                     </button>
+                ) : showLogo ? (
+                    <div className="logo-anim-container flex flex-col items-center">
+                        <img
+                            src={logo2}
+                            alt="Heptagon"
+                            className="w-80 md:w-[32rem] logo-glow object-contain"
+                        />
+                    </div>
                 ) : (
                     <div className="relative z-10 flex items-center justify-center">
                         <span
