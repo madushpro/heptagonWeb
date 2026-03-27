@@ -35,6 +35,21 @@ const DEPARTMENTS = [
   { id: "software", label: "Software Engineering", Icon: Code2 },
 ];
 
+import m1 from "../assets/team/m1.jpg";
+import m2 from "../assets/team/m2.jpg";
+import m3 from "../assets/team/m3.jpg";
+import hasitha from "../assets/team/hasitha.jpg";
+import nirul from "../assets/team/nirul.jpg";
+import lakshan from "../assets/team/lakshan.jpeg";
+import thilanka from "../assets/team/thilanka.jpg";
+import yasas from "../assets/team/yasas.jpg";
+import avishka from "../assets/team/avishka.jpg";
+import pasindu from "../assets/team/pasindu.jpg";
+import shenan from "../assets/team/shenan.jpeg";
+import madusha from "../assets/team/madusha.jpeg";
+import malindu from "../assets/team/malindu.jpeg";
+import minidu from "../assets/team/minidu.jpg";
+
 // ── Team data ──────────────────────────────────────────────────────────────
 const TEAM: TeamMember[] = [
   // Management
@@ -44,7 +59,7 @@ const TEAM: TeamMember[] = [
     dept: "management",
     initials: "NA",
     color: "#3b82f6",
-    image: "../assets/team/m2.jpg",
+    image: m2,
   },
   {
     name: "A.M Priyantha Adhikaru",
@@ -52,7 +67,7 @@ const TEAM: TeamMember[] = [
     dept: "management",
     initials: "AP",
     color: "#2563eb",
-    image: "../assets/team/m1.jpg",
+    image: m1,
   },
   {
     name: "Mindada Weerasiri",
@@ -60,7 +75,7 @@ const TEAM: TeamMember[] = [
     dept: ["management", "mobile"],
     initials: "MW",
     color: "#1d4ed8",
-    image: "../assets/team/m3.jpg",
+    image: m3,
   },
 
   // HR
@@ -70,7 +85,7 @@ const TEAM: TeamMember[] = [
     dept: "hr",
     initials: "HE",
     color: "#ec4899",
-    image: "../assets/team/hasitha.jpg",
+    image: hasitha,
   },
 
   // Business Analysis
@@ -80,7 +95,7 @@ const TEAM: TeamMember[] = [
     dept: "business",
     initials: "NH",
     color: "#10b981",
-    image: "../assets/team/nirul.jpg",
+    image: nirul,
   },
 
   // Support Team
@@ -90,7 +105,7 @@ const TEAM: TeamMember[] = [
     dept: "support",
     initials: "LB",
     color: "#f97316",
-    image: "../assets/team/lakshan.jpeg",
+    image: lakshan,
   },
   {
     name: "H.P Thilanka",
@@ -98,7 +113,7 @@ const TEAM: TeamMember[] = [
     dept: "support",
     initials: "HT",
     color: "#ea580c",
-    image: "../assets/team/thilanka.jpg",
+    image: thilanka,
   },
 
   // Software Engineering & Mobile (Reordered by request)
@@ -108,7 +123,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "YW",
     color: "#f97316",
-    image: "../assets/team/yasas.jpg",
+    image: yasas,
   },
   {
     name: "Avishka Ranasinha",
@@ -116,7 +131,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "AR",
     color: "#ea580c",
-    image: "../assets/team/avishka.jpg",
+    image: avishka,
   },
   {
     name: "Pasindu Bhanuka",
@@ -124,7 +139,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "PB",
     color: "#fb923c",
-    image: "../assets/team/pasindu.jpg",
+    image: pasindu,
   },
   {
     name: "Shenan Rathnayaka",
@@ -132,7 +147,7 @@ const TEAM: TeamMember[] = [
     dept: "mobile",
     initials: "SR",
     color: "#7c3aed",
-    image: "../assets/team/shenan.jpeg",
+    image: shenan,
   },
   {
     name: "Madusha Thassara",
@@ -140,7 +155,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "MT",
     color: "#f97316",
-    image: "../assets/team/madusha.jpeg",
+    image: madusha,
   },
   {
     name: "Malindu Sanchana",
@@ -148,7 +163,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "MS",
     color: "#ea580c",
-    image: "../assets/team/malindu.jpeg",
+    image: malindu,
   },
   {
     name: "Minidu Tharinda",
@@ -156,7 +171,7 @@ const TEAM: TeamMember[] = [
     dept: "software",
     initials: "MT",
     color: "#fb923c",
-    image: "../assets/team/minidu.jpg",
+    image: minidu,
   },
 ];
 
@@ -321,8 +336,8 @@ const MeetTheCrew: React.FC = () => {
                   key={id}
                   onClick={() => setActiveTab(id)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 border ${active
-                      ? "bg-orange-500 text-white border-orange-500 shadow-lg shadow-orange-500/20"
-                      : "dark:bg-white/5 bg-white dark:border-white/10 border-black/10 dark:text-gray-400 text-gray-600 hover:border-orange-500 hover:text-orange-500"
+                    ? "bg-orange-500 text-white border-orange-500 shadow-lg shadow-orange-500/20"
+                    : "dark:bg-white/5 bg-white dark:border-white/10 border-black/10 dark:text-gray-400 text-gray-600 hover:border-orange-500 hover:text-orange-500"
                     }`}
                 >
                   <Icon size={13} />
