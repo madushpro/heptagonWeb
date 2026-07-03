@@ -1,5 +1,10 @@
 import { ProjectItem } from "@/types/projectTypes";
 
+import p1 from "../assets/p1.png";
+import p2 from "../assets/p2.png";
+import p3 from "../assets/p3.png";
+import p4 from "../assets/p4.png";
+
 export const projects: ProjectItem[] = [
   {
     id: "inventory-management-system",
@@ -7,7 +12,7 @@ export const projects: ProjectItem[] = [
     cat: "Desktop App",
     year: "2025",
     featured: true,
-    img: "../assets/p1.png",
+    img: p1,
 
     problem:
       "SMEs struggled with fragmented financial reporting across multiple spreadsheets and disconnected accounting tools.",
@@ -34,7 +39,7 @@ export const projects: ProjectItem[] = [
     title: "Report Portal",
     cat: "Desktop App",
     year: "2024",
-    img: "../assets/p2.png",
+    img: p2,
 
     problem:
       "Client needed a scalable e-commerce engine capable of handling seasonal traffic spikes.",
@@ -61,7 +66,7 @@ export const projects: ProjectItem[] = [
     title: "POS System",
     cat: "Desktop App",
     year: "2025",
-    img: "../assets/p3.png",
+    img: p3,
 
     problem:
       "Businesses lacked predictive insights and relied only on historical reports.",
@@ -87,7 +92,7 @@ export const projects: ProjectItem[] = [
     title: "HRIS System",
     cat: "Software System",
     year: "2024",
-    img: "../assets/p4.png",
+    img: p4,
 
     problem:
       "Hospitals faced inefficient patient record management and appointment scheduling.",

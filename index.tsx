@@ -4,6 +4,14 @@ import App from "./App";
 import { ThemeProvider } from "./components/theme-provider";
 import "./index.css";
 
+const RootComponent = () => {
+  return (
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
+      <App />
+    </ThemeProvider>
+  );
+};
+
 const rootElement = document.getElementById("root");
 if (!rootElement) {
   throw new Error("Could not find root element to mount to");
@@ -12,13 +20,6 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="light"
-      enableSystem={false}
-      disableTransitionOnChange
-    >
-      <App />
-    </ThemeProvider>
+    <RootComponent />
   </React.StrictMode>,
 );

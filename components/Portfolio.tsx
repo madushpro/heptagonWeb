@@ -27,9 +27,9 @@ const Portfolio: React.FC = () => {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top top",
-            end: () => `+=${scrollWrapper.scrollWidth}`,
+            end: () => `+=${scrollWrapper.scrollWidth * 0.7}`,
             pin: true,
-            scrub: 1,
+            scrub: 0.5,
             invalidateOnRefresh: true,
           },
         });
@@ -46,7 +46,7 @@ const Portfolio: React.FC = () => {
                 containerAnimation: tween,
                 start: "left right",
                 end: "right left",
-                scrub: true,
+                scrub: 1,
               },
             },
           );

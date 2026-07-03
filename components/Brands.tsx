@@ -7,11 +7,12 @@ import logo5 from "../assets/Frame 1.jpg";
 
 const Brands: React.FC = () => {
   const brands = [
+    { name: "CFC Pharmacy", src: logo4 },
+    { name: "Chandra Furniture", src: logo5 },
     { name: "CeylonLifecare", src: logo1 },
     { name: "Caresoul Ceylon", src: logo2 },
     { name: "Vitaglow", src: logo3 },
-    { name: "CFC Pharmacy", src: logo4 },
-    { name: "Chandra Furniture", src: logo5 },
+
   ];
 
   return (
